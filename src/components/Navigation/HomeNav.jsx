@@ -9,11 +9,11 @@ const Nav = () => {
   return (
     <div className={style.container} >
         <div className={style.logoContainer}>
-            <img src={logoMobile} alt="Slim Mom Logo" width="46" height="44" className={style.logoMobile} />
-            <img src={logoText} alt="Slim Mom Logo" width="105" height="44" className={style.logoText} />
+            <img src={logoMobile} alt="Slim Mom Logo" width="46" height="44" className={style.logoMobile} onClick={() => navigate("/")}/>
+            <img src={logoText} alt="Slim Mom Logo" width="105" height="44" className={style.logoText} onClick={() => navigate("/")}/>
         </div>
 
-      <img src={logo} alt="Slim Mom Logo" width="167" height="66" className={style.logo} />
+      <img src={logo} alt="Slim Mom Logo" width="167" height="66" className={style.logo} onClick={() => navigate("/")}/>
 
       <div className={style.nav}>
       <button type="button" className={style.loginButton} onClick={() => navigate("/login")}>
