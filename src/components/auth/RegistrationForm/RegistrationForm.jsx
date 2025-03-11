@@ -28,7 +28,7 @@ export default function RegistrationForm() {
                   required
                   />
               </label>
-              <label>
+              <label className={style.label}>
                   <input 
                   type="password" 
                   name="password" 
@@ -45,7 +45,6 @@ export default function RegistrationForm() {
                     Log in
                 </button>
               </div>
-              
           </form>
       </div>
     );

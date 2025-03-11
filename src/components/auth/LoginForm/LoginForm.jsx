@@ -19,7 +19,7 @@ export default function LoginForm() {
                   required
                   />
               </label>
-              <label>
+              <label className={style.label}>
                   <input 
                   type="password" 
                   name="password" 
