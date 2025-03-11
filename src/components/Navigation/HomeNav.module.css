@@ -64,3 +64,8 @@
     }
     
 }
+/* to change the colro */
+.active {
+    color: black; 
+    font-weight: bold;
+  }

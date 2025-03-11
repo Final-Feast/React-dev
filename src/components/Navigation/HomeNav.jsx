@@ -16,12 +16,24 @@ const Nav = () => {
       <img src={logo} alt="Slim Mom Logo" width="167" height="66" className={style.logo} onClick={() => navigate("/")}/>
 
       <div className={style.nav}>
-      <button type="button" className={style.loginButton} onClick={() => navigate("/login")}>
+      <button
+          type="button"
+          className={`${style.loginButton} ${
+            location.pathname === "/login" ? style.active : ""
+          }`}
+          onClick={() => navigate("/login")}
+        >
           LOG IN
-      </button>
-        <button type="button" className={style.loginButton} onClick={() => navigate("/register")}>
+        </button>
+        <button
+          type="button"
+          className={`${style.loginButton} ${
+            location.pathname === "/register" ? style.active : ""
+          }`}
+          onClick={() => navigate("/register")}
+        >
           REGISTER
-      </button>
+        </button>
       </div>
       
     </div>
