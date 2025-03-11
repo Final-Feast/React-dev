@@ -27,7 +27,11 @@
     line-height: 100%;
     cursor: pointer;
 }
-
+.logo,
+.logoText,
+.logoMobile{
+    cursor: pointer;
+}
 
 @media screen and (min-width: 768px){
     .container{
