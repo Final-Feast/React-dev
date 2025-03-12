@@ -34,7 +34,7 @@ const Nav = () => {
           }`}
           onClick={() => navigate("/register")}
         >
-          REGISTER
+          REGISTERATION
         </button>
        
       </div>

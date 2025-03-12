@@ -1,0 +1,51 @@
+
+
+.userContainer{
+    background-color:#F0F1F3;
+    width: 100%;
+    display: flex;
+justify-content: flex-end;
+display: flex;
+}
+
+.button{
+    border:none;
+    background-color: transparent;
+    margin: 10px;
+    padding: 5px;
+}
+
+.userContainer > :last-child{
+    border-left: 2px solid #E0E0E0 ;
+    padding:15px;
+    cursor: pointer;
+}
+
+.active {
+    color: black;
+    font-weight: bold;
+}
+
+.button{
+    font-family: Verdana;
+font-weight: 700;
+font-size: 14px;
+line-height: 100%;
+letter-spacing: 4%;
+color: #9B9FAA;
+
+}
+
+
+@media screen and (min-width: 768px) {
+
+    .userContainer{
+    background-color:transparent;
+
+}
+}
+
+.active {
+    color: black;
+    font-weight: bold;
+}

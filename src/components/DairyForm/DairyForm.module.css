@@ -1,0 +1,27 @@
+.diaryPageContainer {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+/* Sol taraf: Takvim, Form ve Liste */
+.leftSection {
+    margin-top: 150px;
+    
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+/* Sağ taraf: Özet Bilgiler */
+.rightSection {
+    flex: 1;
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.summaryBox,
+.notRecommended {
+    margin-bottom: 20px;
+}

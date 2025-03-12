@@ -1,54 +1,116 @@
-.container {
-    display: flex;
-    padding: 20px;
-    border-bottom: 2px solid #E0E0E0;
-    
-        border: none;
-        justify-content: revert-layer;
-        gap: 20px;
-      
-    
-}
-.logoContainer{
-    display: flex;
-    gap: 8px;
-}
-
-.nav {
-  
- border-left: 1px solid #e0e0e09a;
-padding: 0 0 0 20px;
- display: flex;
-flex-direction: row;
-align-items: center;
-gap: 20px;
-}
-
-.logo
-{
-    display: none;
-}
-
-.diaryButton {
-    background-color: white;
-    color: #9B9FAA;
-    border: none;
-    padding: 10px 20px;
-    border: none;
-    font-weight: 700;
-    font-size: 14px;
-    line-height: 100%;
-    cursor: pointer;
-}
 
 .logo,
-.logoText,
-.logoMobile {
-    cursor: pointer;
+.nav{
+    display: none;
+
+}
+.container{
+    display: flex;
+    flex-direction: column;
+
+}
+
+.logoContainer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    border-bottom: 2px solid #E0E0E0;
+
+}
+
+.logoMobileContainer{
+    padding-bottom: 20px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+ .userMenuTablet{
+display:none} 
+
+.button{
+    font-family: Verdana;
+font-weight: 700;
+font-size: 14px;
+line-height: 100%;
+letter-spacing: 4%;
+color: #9B9FAA;
+
 }
 
 
-.active {
-    color: black;
-    font-weight: bold;
+@media screen and (min-width: 768px) {
+    .logo{
+        display: none;
+    }
+    
+    .userMenu{
+        display: none;
+    }
+    .userMenuTablet{
+        display:flex} 
+
+        .userMenuContainer{
+            display: flex;
+            flex-direction: row;
+            gap: 10px;
+            align-items: center;
+            gap:48px
+        }
+        
+}
+
+@media screen and (min-width: 1024px) {
+    .userMenuTablet,
+    .modalMenuContainer,
+    .logoMobileContainer{
+        display:none
+    } 
+
+        .logoContainer{
+            border:none;
+        }
+        .logo,
+        .userMenu,
+        .nav{
+            display: flex;
+        }
+        
+        .nav{
+            gap: 20px;
+            align-items: center;
+            margin-top: 86px;
+        }
+
+        
+
+        .userMenu{
+            justify-content: flex-end;
+            position: absolute;
+            right: 20px;
+            margin-top:115px;
+
+        }
+
+        
+
+        .button{
+            cursor: pointer;
+            border: none;
+            background-color: transparent;
+            margin-top: 45px;
+        }
+
+        .nav > :nth-child(2){
+            border-left: 2px solid #E0E0E0 ;
+            padding:15px;
+            cursor: pointer;
+        }
+
+        .active {
+            color: black;
+            font-weight: bold;
+        }
+    
 }
