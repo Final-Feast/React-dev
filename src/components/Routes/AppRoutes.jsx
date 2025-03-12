@@ -5,6 +5,7 @@ import { Routes } from "react-router-dom";
 const HomePage = lazy(() => import('../pages/HomePage/HomePage'));
 const LoginPage = lazy(() => import('../pages/LoginPage/index'));
 const RegisterPage = lazy(() => import('../pages/RegistrationPage/index'));
+const DiaryPage = lazy(() => import('../pages/DiaryPage/DiaryPage'));
 
 
 
@@ -15,6 +16,7 @@ export default function AppRoutes() {
                 <Route path="/" element={<HomePage />} />
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/register" element={<RegisterPage />} />
+                <Route path="/diary" element={<DiaryPage />} />
             </Routes>
         </Suspense>
     );

@@ -1,0 +1,54 @@
+.container {
+    display: flex;
+    padding: 20px;
+    border-bottom: 2px solid #E0E0E0;
+    
+        border: none;
+        justify-content: revert-layer;
+        gap: 20px;
+      
+    
+}
+.logoContainer{
+    display: flex;
+    gap: 8px;
+}
+
+.nav {
+  
+ border-left: 1px solid #e0e0e09a;
+padding: 0 0 0 20px;
+ display: flex;
+flex-direction: row;
+align-items: center;
+gap: 20px;
+}
+
+.logo
+{
+    display: none;
+}
+
+.diaryButton {
+    background-color: white;
+    color: #9B9FAA;
+    border: none;
+    padding: 10px 20px;
+    border: none;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 100%;
+    cursor: pointer;
+}
+
+.logo,
+.logoText,
+.logoMobile {
+    cursor: pointer;
+}
+
+
+.active {
+    color: black;
+    font-weight: bold;
+}
