@@ -1,0 +1,27 @@
+/* DairyPage component for mobile */
+@media (max-width: 768px) {
+    .container {
+      padding: 10px;
+    }
+  
+    .form {
+      margin-top: 10px;
+    }
+  }
+  
+  /* DairyPage component for larger screens */
+  @media (min-width: 1024px) {
+    .container {
+      padding: 50px;
+    }
+  
+    .form {
+      margin-top: 50px;
+    }
+  }
+
+  /* .diaryPageContainer {
+  height: 100vh;
+  background: linear-gradient(to left, #f8f9fa 50%, white 50%);
+}
+ */

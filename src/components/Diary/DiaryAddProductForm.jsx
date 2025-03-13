@@ -4,6 +4,7 @@ import styles from './DiaryAddProductForm.module.css';
 const DiaryAddProductForm = ({ onAddProduct }) => {
   const [productName, setProductName] = useState('');
   const [amount, setAmount] = useState('');
+  
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -14,7 +15,7 @@ const DiaryAddProductForm = ({ onAddProduct }) => {
       amount: Number(amount),
     };
 
-    console.log('Ürün eklendi:', newProduct); // Şimdilik konsola yazdırıyoruz
+    console.log('Product added:', newProduct); // Şimdilik konsola yazdırıyoruz
     onAddProduct(newProduct); // API'ye bağlandığında burayı güncelleyeceğiz
 
     setProductName('');
@@ -22,7 +23,8 @@ const DiaryAddProductForm = ({ onAddProduct }) => {
   };
 
   return (
-    <form className={styles.form} onSubmit={handleSubmit}>
+    <div className={styles.container}>
+      <form className={styles.form} onSubmit={handleSubmit}>
       <input
         className={styles.input}
         type="text"
@@ -31,14 +33,20 @@ const DiaryAddProductForm = ({ onAddProduct }) => {
         onChange={(e) => setProductName(e.target.value)}
       />
       <input
-        className={styles.inputGram}
+        className={styles.input}
         type="number"
         placeholder="Grams"
         value={amount}
         onChange={(e) => setAmount(e.target.value)}
       />
-      <button className={styles.button} type="submit">+</button>
-    </form>
+      </form>
+      <div className={styles.buttonContainer}>
+        <button className={styles.button} type="submit">+</button>
+
+      </div>
+
+    </div>
+    
   );
 };
 

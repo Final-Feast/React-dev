@@ -1,13 +1,11 @@
 .calendarContainer {
     display: flex;
-    padding: 10px;
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 100%;
+    position: relative;
 }
 
 .selectedDate {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: Verdana;
     margin-top: 10px;
     margin-right: 21px;
     font-size: 34px;
@@ -22,3 +20,12 @@
     margin-left: 14px;
    margin-top: 10px;
 }
+
+.calendar {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centers the calendar both horizontally and vertically */
+    z-index: 999; /* Ensures the calendar appears on top of other elements */
+}
+

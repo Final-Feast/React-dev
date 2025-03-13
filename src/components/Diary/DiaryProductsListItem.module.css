@@ -1,38 +1,24 @@
-.item {
+span {
     display: flex;
     justify-content: space-between;
     padding: 10px;
-    border-bottom: 1px solid #ddd;
 }
 
-.name {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 14px;
-    font-weight: 400;
-    color:  #212121;
-}
 
-.amount {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-        font-size: 14px;
-        font-weight: 400;
-        color: #212121;
-}
-.dailyRate{
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-        font-size: 14px;
-        font-weight: 400;
-        color: #212121;
-}
 
 .button {
     background: transparent;
     border: none;
-    color: grey;
     font-size: 16px;
     cursor: pointer;
 }
 
-.button:hover {
-    color: darkred;
+
+p{
+    font-family: Verdana;
+font-weight: 400;
+font-size: 20px;
+line-height: 100%;
+letter-spacing: 4%;
+
 }

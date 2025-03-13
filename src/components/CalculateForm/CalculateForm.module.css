@@ -32,25 +32,12 @@ input[type="number"] {
     height: 30px;
     border: none;
     border-bottom: 1px solid #E0E0E0;
-    -moz-appearance: textfield;
-    -webkit-appearance: none;
     appearance: none;
     margin-bottom: 32px;
   }
 
-  .input:hover {
-    outline: none;
-    border-bottom: 1px solid #E0E0E0;
 
-  }
   
-  .input:focus {
-    border:none;
-    outline: none;
-    border-bottom: 1px solid #E0E0E0;
-
-
-  }
 
   .input::placeholder {
     font-family: Verdana, sans-serif;

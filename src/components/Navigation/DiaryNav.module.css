@@ -81,6 +81,7 @@ color: #9B9FAA;
             gap: 20px;
             align-items: center;
             margin-top: 86px;
+            z-index: 99;
         }
 
         

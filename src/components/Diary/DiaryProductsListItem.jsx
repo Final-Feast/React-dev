@@ -5,7 +5,7 @@ const DiaryProductsListItem = ({ product, onDelete }) => {
     <li className={styles.item}>
       <span className={styles.name}>{product.productName}</span>
       <span className={styles.amount}>{product.amount} g</span>
-     <span className={styles.dailyRate}>{product.dailyRate}kcal</span>
+      <span className={styles.dailyRate}>{product.dailyRate}kcal</span>
       <button className={styles.button} onClick={() => onDelete(product.id)}>✖</button>
     </li>
   );

@@ -2,7 +2,7 @@ import DiaryProductsListItem from './DiaryProductsListItem';
 
 const DiaryProductsList = ({ products, onDeleteProduct }) => {
   if (!Array.isArray(products) || products.length === 0) {
-    return <p>Let's add some products!</p>; // ✅ Eğer boşsa hata yerine mesaj göster
+    return <p>Let's add some products!</p>;
   }
 
   return (

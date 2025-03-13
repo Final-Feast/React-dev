@@ -1,0 +1,64 @@
+.diaryPageContainer {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+/* Sol taraf: Takvim, Form ve Liste */
+.leftSection {
+    margin-top: 150px;
+    
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+/* Sağ taraf: Özet Bilgiler */
+.rightSection {
+    flex: 1;
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.summaryBox,
+.notRecommended {
+    margin-bottom: 20px;
+}
+
+
+@media screen and (min-width: 1024px) {
+    .diaryPageContainer {
+        flex-direction: row;
+        gap: 100px;
+    }
+    
+}
+
+/* .diaryPageContainer {
+    display: flex;
+    justify-content: space-between;
+    gap: 100px;
+}
+
+.leftSection {
+    margin-top: 150px;
+    display: flex;
+    flex-direction: column;
+}
+
+.diaryPageContainer {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+}
+
+.rightSection {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%); 
+    width: 50%;
+    padding: 90px;
+}
+ */

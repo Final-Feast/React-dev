@@ -3,7 +3,7 @@ import axios from "axios";
 import DiaryDateCalendar from "../Diary/DiaryDateCalendar";
 import DiaryAddProductForm from "../Diary/DiaryAddProductForm";
 import DiaryProductsList from "../Diary/DiaryProductsList";
-import styles from "./DairyForm.module.css";
+import styles from "./DiaryForm.module.css";
 
 const DiaryForm = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
@@ -14,7 +14,7 @@ const DiaryForm = () => {
       try {
         const formattedDate = selectedDate.toISOString().split("T")[0];
         const response = await axios.get(`/api/diary/${formattedDate}`);
-        console.log("API'den gelen veri:", response.data);
+        console.log("API'den gelen veri:");
         setProducts(Array.isArray(response.data) ? response.data : []);
       } catch (error) {
         console.error("Ürünleri çekerken hata oluştu:", error);
@@ -45,7 +45,6 @@ const DiaryForm = () => {
 
       {/* Sağ Taraf */}
       <div className={styles.rightSection}>
-        {/* username and logout */}
         <div className={styles.summaryBox}>
           <h3>Summary for {selectedDate.toLocaleDateString()}</h3>
           <p>Left: 625 kcal</p>

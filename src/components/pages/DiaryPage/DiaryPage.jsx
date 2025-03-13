@@ -1,11 +1,11 @@
 import Nav from '../../Navigation/DiaryNav.jsx';
-import DairyForm from '../../DairyForm/DairyForm.jsx';
-
+import DiaryForm from '../../DiaryForm/DiaryForm.jsx';
+import styles from "./DiaryPage.module.css";
 const DairyPage = () => {
     return (
-        <div>
+        <div className={styles.diaryPageContainer}>
         <Nav />
-        <DairyForm />
+        <DiaryForm />
         </div>
     );
 };
