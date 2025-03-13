@@ -4,3 +4,66 @@ mobil için
     display:none;
 } 
  */
+ /* DiaryProductsList.module.css */
+ .productList {
+     padding: 20px;
+ }
+
+ .emptyMessage {
+     text-align: center;
+     font-size: 18px;
+     color: #888;
+ }
+
+ .list {
+     list-style: none;
+     padding: 0;
+ }
+
+ .productItem {
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     padding: 10px 0;
+     border-bottom: 1px solid #ddd;
+ }
+
+ .deleteButton {
+     background: none;
+     border: none;
+     color: red;
+     font-size: 18px;
+     cursor: pointer;
+ }
+
+ .summaryBox {
+     background-color: #f9f9f9;
+     padding: 20px;
+     margin-top: 20px;
+     border-radius: 8px;
+ }
+
+ @media (min-width: 768px) {
+     .productItem {
+         flex-direction: row;
+         justify-content: space-between;
+     }
+
+     .deleteButton {
+         font-size: 20px;
+     }
+
+     .summaryBox {
+         padding: 30px;
+     }
+ }
+
+ @media (min-width: 1024px) {
+     .productItem {
+         padding: 15px 0;
+     }
+
+     .summaryBox {
+         padding: 40px;
+     }
+ }

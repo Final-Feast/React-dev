@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import DiaryDateCalendar from "../Diary/DiaryDateCalendar";
 import DiaryAddProductForm from "../Diary/DiaryAddProductForm";
@@ -8,7 +9,8 @@ import styles from "./DiaryForm.module.css";
 const DiaryForm = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [products, setProducts] = useState([]);
-  
+  const navigate = useNavigate(); // 📌 Yönlendirme için eklendi
+
   useEffect(() => {
     const fetchProducts = async () => {
       try {
@@ -27,6 +29,9 @@ const DiaryForm = () => {
 
   const handleAddProduct = (newProduct) => {
     setProducts((prev) => [...prev, { id: Date.now(), ...newProduct }]);
+    
+    // 📌 Ürün eklenince yönlendirme yap
+    navigate("/diary/products");
   };
 
   const handleDeleteProduct = (id) => {
@@ -35,14 +40,13 @@ const DiaryForm = () => {
 
   return (
     <div className={styles.diaryPageContainer}>
-      
-
       {/* Sol Taraf */}
       <div className={styles.leftSection}>
         <DiaryDateCalendar onDateChange={setSelectedDate} />
-        <DiaryAddProductForm   onAddProduct={handleAddProduct} />
+        <DiaryAddProductForm onAddProduct={handleAddProduct} />
         <DiaryProductsList products={products} onDeleteProduct={handleDeleteProduct} />
       </div>
+
       {/* Sağ Taraf */}
       <div className={styles.rightSection}>
         <div className={styles.summaryBox}>
@@ -58,4 +62,3 @@ const DiaryForm = () => {
 };
 
 export default DiaryForm;
-
