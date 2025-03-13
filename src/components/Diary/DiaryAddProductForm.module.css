@@ -33,6 +33,7 @@
     appearance: none;
     margin-bottom: 32px;
   }
+  
   .input:hover {
     outline: none;
     border-bottom: 1px solid #E0E0E0;

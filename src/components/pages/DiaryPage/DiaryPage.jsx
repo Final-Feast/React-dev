@@ -1,12 +1,22 @@
-import Nav from '../../Navigation/DiaryNav.jsx';
-import DiaryForm from '../../DiaryForm/DiaryForm.jsx';
+import React from "react";
+import { useLocation } from "react-router-dom";
+import DiaryNav from "../../Navigation/DiaryNav";
+import DiaryForm from "../../DiaryForm/DiaryForm";
 import styles from "./DiaryPage.module.css";
-const DairyPage = () => {
-    return (
-        <div className={styles.diaryPageContainer}>
-        <Nav />
+
+const DiaryPage = () => {
+  const location = useLocation();
+
+  return (
+    <div className={styles.diaryPageContainer}>
+      <DiaryNav isDiaryPage={location.pathname === "/diary"} />
+      <div className={styles.leftSection}>
         <DiaryForm />
-        </div>
-    );
+      </div>
+      
+      
+    </div>
+  );
 };
-export default DairyPage;
+
+export default DiaryPage;
