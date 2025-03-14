@@ -1,15 +1,25 @@
-import React from "react";
-import { useLocation } from "react-router-dom";
-import ProductNav from "../../Navigation/ProductNav";
-import DiaryFormMobile from "../../pages/ProductPage/ProductPage";
+import ProductForm from "../../ProductForm/ProductForm";
+import DiaryFormMobile from "../../DiaryForm/DiaryFormMobile";
 import styles from "./ProductPage.module.css";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const ProductPage = () => {
-  const location = useLocation();
+// Mobil değilse ana sayfaya yönlendir
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const isMobile = window.innerWidth <= 768;
+    if (!isMobile) {
+      navigate("/diary"); 
+    }
+  }, []);
+
+  // ---------------------------------------
 
   return (
     <div className={styles.productPageContainer}>
-      <ProductNav isproductPage={location.pathname === "/product-page"} />
+      <ProductForm />
       <div className={styles.leftSection}>
         <DiaryFormMobile />
       </div>

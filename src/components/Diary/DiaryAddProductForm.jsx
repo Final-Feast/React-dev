@@ -1,24 +1,15 @@
-import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom'; // Yönlendirme için
-import styles from './DiaryAddProductForm.module.css';
+import { useState } from "react";
+import { useNavigate } from "react-router-dom"; // Yönlendirme için
+import styles from "./DiaryAddProductForm.module.css";
 
 const DiaryAddProductForm = ({ onAddProduct }) => {
-  const [productName, setProductName] = useState('');
-  const [amount, setAmount] = useState('');
-  const [isMobile, setIsMobile] = useState(false); // Mobil kontrolü için
-  const navigate = useNavigate(); // navigate kullanarak yönlendirme yapacağız
+  const [productName, setProductName] = useState("");
+  const [amount, setAmount] = useState("");
+  const navigate = useNavigate(); // useEffect içinde tanımlamaya gerek yok
 
-  // Ekran boyutunu kontrol etmek için useEffect
-  useEffect(() => {
-    const checkIfMobile = () => {
-      setIsMobile(window.innerWidth <= 768); // 768px ve altı mobil kabul edilir
-    };
-
-    checkIfMobile();
-    window.addEventListener('resize', checkIfMobile);
-
-    return () => window.removeEventListener('resize', checkIfMobile);
-  }, []);
+  const handleRedirect = () => {
+    navigate("/product-page");
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -29,37 +20,36 @@ const DiaryAddProductForm = ({ onAddProduct }) => {
       amount: Number(amount),
     };
 
-    console.log('Product added:', newProduct);
+    console.log("Product added:", newProduct);
     onAddProduct(newProduct);
 
-    setProductName('');
-    setAmount('');
-
-    // Eğer mobilde isek, ürün ekledikten sonra yönlendirme yap
-    if (isMobile) {
-      navigate('/product-page'); // Yönlendirmek istediğiniz sayfa yolunu buraya ekleyin
-    }
+    setProductName("");
+    setAmount("");
   };
 
   return (
     <div className={styles.container}>
       <form className={styles.form} onSubmit={handleSubmit}>
-        <input
-          className={styles.input}
-          type="text"
-          placeholder="Enter product name"
-          value={productName}
-          onChange={(e) => setProductName(e.target.value)}
-        />
-        <input
-          className={styles.input}
-          type="number"
-          placeholder="Grams"
-          value={amount}
-          onChange={(e) => setAmount(e.target.value)}
-        />
+        <div className={styles.formContainer}>
+          <input
+            className={styles.input}
+            type="text"
+            placeholder="Enter product name"
+            value={productName}
+            onChange={(e) => setProductName(e.target.value)}
+          />
+          <input
+            className={styles.input}
+            type="number"
+            placeholder="Grams"
+            value={amount}
+            onChange={(e) => setAmount(e.target.value)}
+          />
+        </div>
         <div className={styles.buttonContainer}>
-          <button className={styles.button} type="submit">+</button>
+          <button className={styles.button} type="button" onClick={handleRedirect}>
+            +
+          </button>
         </div>
       </form>
     </div>

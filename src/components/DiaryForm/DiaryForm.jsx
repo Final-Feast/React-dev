@@ -14,7 +14,7 @@ const DiaryForm = () => {
       try {
         const formattedDate = selectedDate.toISOString().split("T")[0];
         const response = await axios.get(`/api/diary/${formattedDate}`);
-        console.log("API'den gelen veri:", response.data);
+        // console.log("API'den gelen veri:", response.data);
         setProducts(Array.isArray(response.data) ? response.data : []);
       } catch (error) {
         console.error("Ürünleri çekerken hata oluştu:", error);
