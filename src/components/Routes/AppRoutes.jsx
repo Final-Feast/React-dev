@@ -18,7 +18,7 @@ export default function AppRoutes() {
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/register" element={<RegisterPage />} />
                 <Route path="/diary" element={<DiaryPage />} />
-                <Route path="/product-page" element={<ProductPage />} />
+                <Route path="/add-product" element={<ProductPage />} />
             </Routes>
         </Suspense>
     );

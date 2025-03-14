@@ -8,7 +8,7 @@ const DiaryAddProductForm = ({ onAddProduct }) => {
   const navigate = useNavigate(); // useEffect içinde tanımlamaya gerek yok
 
   const handleRedirect = () => {
-    navigate("/product-page");
+    navigate("/add-product");
   };
 
   const handleSubmit = (e) => {
