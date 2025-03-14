@@ -1,7 +1,6 @@
 .calendarContainer {
     display: flex;
     max-width: 100%;
-    position: relative;
 }
 
 .selectedDate {

@@ -3,7 +3,7 @@ import styles from './DiaryProductsList.module.css';
 
 const DiaryProductsList = ({ products, onDeleteProduct }) => {
   if (!Array.isArray(products) || products.length === 0) {
-    return <p>Let's add some products!</p>;
+    return;
   }
 
   return (

@@ -20,7 +20,7 @@
 }
 
 .logoMobileContainer{
-    padding-bottom: 20px;
+    padding: 20px 10px 10px 10px;
     display: flex;
     flex-direction: row;
     gap: 10px;
@@ -37,6 +37,10 @@ line-height: 100%;
 letter-spacing: 4%;
 color: #9B9FAA;
 
+}
+
+.modalMenuContainer{
+    cursor: pointer;
 }
 
 
@@ -80,7 +84,6 @@ color: #9B9FAA;
         .nav{
             gap: 20px;
             align-items: center;
-            margin-top: 86px;
             z-index: 99;
         }
 
@@ -90,7 +93,7 @@ color: #9B9FAA;
             justify-content: flex-end;
             position: absolute;
             right: 20px;
-            margin-top:115px;
+            margin-top:30px;
 
         }
 
