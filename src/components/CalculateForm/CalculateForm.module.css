@@ -188,6 +188,10 @@ input[type="number"] {
   .column2 > :last-child {
       order: 2; /* Son çocuk en üste gelir (Blood type) */
   }
+  .button{
+    padding: 13px 25px ;
+    height: max-content;
+  }
   }
   
   @media (min-width: 1280px) {
