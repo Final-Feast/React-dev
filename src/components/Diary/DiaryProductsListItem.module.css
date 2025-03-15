@@ -1,24 +1,50 @@
-span {
+.item{
+    list-style: none;
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
-    padding: 10px;
+    padding:none;
+    gap: 32px;
 }
 
+.name{
+    text-align: left;
+    width: 240px;
+    border-bottom:1px solid #E0E0E0;
 
+}
 
-.button {
-    background: transparent;
-    border: none;
-    font-size: 16px;
+.amount{
+    text-align: right;
+    width: 107px;
+
+    border-bottom:1px solid #E0E0E0;
+    
+
+}
+
+.dailyRate{
+    text-align: right;
+    border-bottom:1px solid #E0E0E0;
+    width: 107px;
+
+}
+
+.button{
+    border:none;
+    background-color: transparent;
     cursor: pointer;
+    color: #9B9FAA;
+    padding: 0;
+
 }
-
-
-p{
+span{
     font-family: Verdana;
 font-weight: 400;
-font-size: 20px;
+font-size: 14px;
 line-height: 100%;
 letter-spacing: 4%;
+text-align: right;
+padding-bottom: 20px;
 
 }

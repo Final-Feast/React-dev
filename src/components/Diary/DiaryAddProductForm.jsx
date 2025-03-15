@@ -1,24 +1,13 @@
-import { useState, useEffect } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
-import styles from "./DiaryAddProductForm.module.css";
+import { useState } from 'react';
+import styles from './DiaryAddProductForm.module.css';
+// import Mobile from 'DiaryAddProductFormMobile'
 
 const DiaryAddProductForm = ({ onAddProduct }) => {
-  const [productName, setProductName] = useState("");
-  const [amount, setAmount] = useState("");
-  const navigate = useNavigate();
-  const location = useLocation(); // To check the current route
+  const [productName, setProductName] = useState('');
+  const [amount, setAmount] = useState('');
 
-  const isMobile = window.innerWidth <= 768; // Check if screen width indicates mobile
+  // Ekran boyutunu kontrol etmek için useEffect
 
-  const handleRedirect = () => {
-    if (isMobile) {
-      // Allow redirect only if on mobile
-      navigate("/add-product");
-    } else {
-      // Prevent navigation on non-mobile devices
-      alert("This page is only accessible on mobile.");
-    }
-  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -29,59 +18,113 @@ const DiaryAddProductForm = ({ onAddProduct }) => {
       amount: Number(amount),
     };
 
-    console.log("Product added:", newProduct);
+    console.log('Product added:', newProduct);
     onAddProduct(newProduct);
 
-    setProductName("");
-    setAmount("");
+    setProductName('');
+    setAmount('');
+
+    // Eğer mobilde isek, ürün ekledikten sonra yönlendirme yap
+
   };
-
-  useEffect(() => {
-    // Recalculate on window resize for mobile check
-    const handleResize = () => {
-      if (window.innerWidth <= 768) {
-        // Handle mobile-specific logic
-      }
-    };
-
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
 
   return (
     <div className={styles.container}>
       <form className={styles.form} onSubmit={handleSubmit}>
-        <div className={styles.formContainer}>
-          {(isMobile || location.pathname === "/add-product") && (
-            <>
-              <input
-                className={styles.input}
-                type="text"
-                placeholder="Enter product name"
-                value={productName}
-                onChange={(e) => setProductName(e.target.value)}
-              />
-              <input
-                className={styles.input}
-                type="number"
-                placeholder="Grams"
-                value={amount}
-                onChange={(e) => setAmount(e.target.value)}
-              />
-            </>
-          )}
-        </div>
+        <input
+          className={styles.input}
+          type="text"
+          placeholder="Enter product name"
+          value={productName}
+          onChange={(e) => setProductName(e.target.value)}
+        />
+        <input
+          className={styles.input}
+          type="number"
+          placeholder="Grams"
+          value={amount}
+          onChange={(e) => setAmount(e.target.value)}
+        />
         <div className={styles.buttonContainer}>
-          <button className={styles.button} type="button" onClick={handleRedirect}>
-            +
-          </button>
+          <button className={styles.button} type="submit">+</button>
         </div>
       </form>
     </div>
   );
 };
-
 export default DiaryAddProductForm;
+
+
+
+// eğer DiaryAddProductFormMobile renderlanacaksa bu kod ancak sadece form geliyor 
+
+
+// import { useState, useEffect } from 'react';
+// import { useNavigate } from 'react-router-dom';
+// import styles from './DiaryAddProductForm.module.css';
+// import Mobile from './DiaryAddProductFormMobile';
+
+// const DiaryAddProductForm = ({ onAddProduct }) => {
+//   const [productName, setProductName] = useState('');
+//   const [amount, setAmount] = useState('');
+//   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+//   const navigate = useNavigate();
+
+//   useEffect(() => {
+//     const handleResize = () => {
+//       setIsMobile(window.innerWidth <= 768);
+//     };
+
+//     window.addEventListener('resize', handleResize);
+    
+//     return () => window.removeEventListener('resize', handleResize);
+//   }, []);
+
+//   const handleSubmit = (e) => {
+//     e.preventDefault();
+//     if (!productName || !amount) return;
+
+//     const newProduct = {
+//       productName,
+//       amount: Number(amount),
+//     };
+
+//     console.log('Product added:', newProduct);
+//     onAddProduct(newProduct);
+
+//     setProductName('');
+//     setAmount('');
+
+//     if (isMobile) {
+//       navigate('/add-product');
+//     }
+//   };
+
+//   return isMobile ? (
+//     <Mobile onAddProduct={onAddProduct} />
+//   ) : (
+//     <div className={styles.container}>
+//       <form className={styles.form} onSubmit={handleSubmit}>
+//         <input
+//           className={styles.input}
+//           type="text"
+//           placeholder="Enter product name"
+//           value={productName}
+//           onChange={(e) => setProductName(e.target.value)}
+//         />
+//         <input
+//           className={styles.input}
+//           type="number"
+//           placeholder="Grams"
+//           value={amount}
+//           onChange={(e) => setAmount(e.target.value)}
+//         />
+//         <div className={styles.buttonContainer}>
+//           <button className={styles.button} type="submit">+</button>
+//         </div>
+//       </form>
+//     </div>
+//   );
+// };
+
+// export default DiaryAddProductForm;
