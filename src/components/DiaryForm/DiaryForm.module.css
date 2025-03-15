@@ -14,17 +14,6 @@
 }
 
 /* Sağ taraf: Özet Bilgiler */
-.rightSection {
-    background-color: #f8f9fa;
-    padding:32px ;
-    flex: 1;
-    width: 100%;
-}
-
-.summaryBox,
-.notRecommended {
-    margin-bottom: 20px;
-}
 
 
 @media screen and (min-width: 1024px) {

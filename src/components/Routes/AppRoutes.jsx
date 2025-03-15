@@ -7,6 +7,7 @@ const LoginPage = lazy(() => import('../pages/LoginPage/index'));
 const RegisterPage = lazy(() => import('../pages/RegistrationPage/index'));
 const DiaryPage = lazy(() => import('../pages/DiaryPage/DiaryPage'));
 const ProductPage = lazy(() => import('../pages/ProductPage/ProductPage'));
+const CalculatorPage = lazy(() => import('../pages/CalculatorPage/CalculatorPage'));
 
 
 
@@ -19,6 +20,8 @@ export default function AppRoutes() {
                 <Route path="/register" element={<RegisterPage />} />
                 <Route path="/diary" element={<DiaryPage />} />
                 <Route path="/add-product" element={<ProductPage />} />
+                <Route path="/calculator" element={<CalculatorPage />} />
+
             </Routes>
         </Suspense>
     );

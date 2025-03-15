@@ -1,0 +1,20 @@
+.container{
+    display: flex;
+    flex-direction: row;
+    max-width: 100%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.summaryContainer{
+margin: 94px;
+padding: 100px;
+}
+
+.PageContainer{
+    max-width: fit-content;
+}
+
+.calculateBox{
+    margin-top: 140px;
+}
