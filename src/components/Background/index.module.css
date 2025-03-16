@@ -1,0 +1,88 @@
+/* HomePage.module.css */
+
+
+  .strawberry {
+    position:fixed;
+    right: 36px;
+    bottom:65px;
+    z-index: -9998;
+
+
+  }
+  
+  .backshadow {
+    position: absolute;
+    right: 0;
+    bottom:1px;
+    z-index: -9999;
+    width: max-content;
+
+
+  }
+  
+  .banana {
+    position: absolute;
+    top: -70px;
+    right: 0;
+    z-index: -13;
+
+  }
+  
+  .leaf {
+    position: absolute;
+    bottom: 180px;
+    right: 10vw ;
+    z-index: -12;
+
+  }
+  
+  @media screen and (max-width: 768px) {
+    .strawberry {
+      display: none;
+    }
+  
+    .backshadow {
+      display: none;
+    }
+  
+    .banana {
+      display: none;
+    }
+  
+    .leaf {
+      display: none;
+    }
+    
+  }
+
+  @media screen and (max-width: 1024px) {
+    .strawberry {
+        top: 560px;
+        right: 150px;
+        width: 208px;
+        height: 253px;
+    }
+  
+    .backshadow {
+      top: 420px;
+      right: -30px;
+    }
+  
+    .banana {
+      top: 600px;
+      width: 500px;
+    z-index: -11;
+
+
+    }
+  
+    .leaf {
+      top: 300px;
+      right: 25vw;
+      width: 530px;
+      transform: rotate(90deg);
+    z-index: -12;
+
+    }
+    
+  }
