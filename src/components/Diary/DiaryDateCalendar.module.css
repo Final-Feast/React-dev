@@ -1,15 +1,18 @@
 .calendarContainer {
     display: flex;
     max-width: 100%;
+
 }
 
 .selectedDate {
     font-family: Verdana;
-    margin-top: 10px;
-    margin-right: 21px;
-    font-size: 34px;
-    line-height: 100%;
     font-weight: 700;
+    font-size: 18px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    vertical-align: middle;
+ font-weight: 700;
+    width: 116px;
 }
 .calendarIcon{
     width: 20px;
@@ -27,4 +30,3 @@
     transform: translate(-50%, -50%); /* Centers the calendar both horizontally and vertically */
     z-index: 999; /* Ensures the calendar appears on top of other elements */
 }
-

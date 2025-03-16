@@ -1,0 +1,14 @@
+.container{
+    display: flex;
+    justify-content: space-between; 
+}
+
+.calculateBox{
+    flex:1;
+}
+
+.summaryContainer{
+    display: flex;
+    flex:2;
+    width: 50%;
+}

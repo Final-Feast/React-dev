@@ -22,9 +22,11 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
-    padding: 15px;
 }
 
+form:nth-last-child(1) .input[type="number"]{
+    text-align: right;
+}
 .input {
     width: 100%;
     height: 30px;
@@ -70,6 +72,7 @@
     height: 48px;
     border-radius: 90px;
     cursor: pointer;
+
 }
 
 .button:hover {
@@ -78,18 +81,21 @@
 
 @media screen and (min-width: 768px) {
     .container{
-        flex-direction: row;
         gap:87px;
     }
     .form{
         flex-direction: row;
         gap: 22px;
-        width: 100%;
+        width: 80%;
     }
 }
 
 @media screen and (min-width: 1024px) {
     .container{
         gap:60px;
+    }
+    .button{
+    margin-left: 60px;
+
     }
 }

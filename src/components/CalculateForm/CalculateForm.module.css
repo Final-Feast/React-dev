@@ -194,7 +194,7 @@ input[type="number"] {
   }
   }
   
-  @media (min-width: 1280px) {
+  @media (min-width: 1024px) {
     .button {
       margin: 0 auto;
       left: 400px;

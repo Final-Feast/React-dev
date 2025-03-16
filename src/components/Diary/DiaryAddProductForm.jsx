@@ -9,23 +9,37 @@ const DiaryAddProductForm = ({ onAddProduct }) => {
   // Ekran boyutunu kontrol etmek için useEffect
 
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!productName || !amount) return;
-
+  
     const newProduct = {
-      productName,
-      amount: Number(amount),
+      title: productName,
+      weight: Number(amount),
+      date: new Date().toISOString().split('T')[0], // YYYY-MM-DD formatında tarih
     };
-
-    console.log('Product added:', newProduct);
-    onAddProduct(newProduct);
-
-    setProductName('');
-    setAmount('');
-
-    // Eğer mobilde isek, ürün ekledikten sonra yönlendirme yap
-
+  
+    try {
+      const response = await fetch('/api/diary/add', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(newProduct),
+      });
+  
+      if (!response.ok) {
+        throw new Error('Ürün eklenirken hata oluştu');
+      }
+  
+      console.log('Product added:', newProduct);
+      onAddProduct(newProduct);
+  
+      setProductName('');
+      setAmount('');
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (

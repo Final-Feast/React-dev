@@ -9,12 +9,12 @@ const DiaryPage = () => {
 
   return (
     <div className={styles.diaryPageContainer}>
-      <DiaryNav isDiaryPage={location.pathname === "/diary"} />
-      <div className={styles.leftSection}>
+      <div className={styles.diarynav}>
+        <DiaryNav isDiaryPage={location.pathname === "/diary"} />
+      </div>
+      <div className={styles.diaryform}>
         <DiaryForm />
       </div>
-      
-      
     </div>
   );
 };

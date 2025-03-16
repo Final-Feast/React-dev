@@ -52,7 +52,7 @@ const DiaryDateCalendar = ({ onDateChange }) => {
       </p>
 
       <button onClick={toggleCalendarVisibility} className={styles.calendarIcon}>
-        <img src={CalendarIcon} alt="Takvim İkonu" />
+        <img src={CalendarIcon} alt="Takvim İkonu" width="20" height="20" />
       </button>
 
       {/* Takvim sadece isCalendarVisible true olduğunda görünür */}

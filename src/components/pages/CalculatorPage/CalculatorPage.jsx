@@ -1,28 +1,23 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
 import DiaryNav from "../../Navigation/DiaryNav";
-import CalculateForm from "../../CalculateForm/CalculateForm";
+import CalculatorPageForm from "../../CalculatorPageForm/CalculatorPageForm";
 import style from "./CalculatorPage.module.css";
-import DiarySummary from "../../DiaryForm/DiarySummary"; 
 
 
-const DiaryPage = () => {
+const CalculatorPage = () => {
   const location = useLocation();
 
   return (
-    <div className={style.PageContainer}>
-      <DiaryNav isDiaryPage={location.pathname === "/calculator"} />
-        <div className={style.container}>
-
-          <CalculateForm  className={style.calculateBox}/>
-          <DiarySummary className={style.summaryContainer} selectedDate={new Date()}  />
-
-        </div>
-        
-      
-      
+    <div className={style.CalculatorPageContainer}>
+      <div className={style.diarynav}>  
+        <DiaryNav isDiaryPage={location.pathname === "/calculator"} />
+      </div>
+      <div className={style.diaryform}>
+        <CalculatorPageForm  className={style.calculateBox}/>
+      </div>
     </div>
   );
 };
 
-export default DiaryPage;
+export default CalculatorPage;

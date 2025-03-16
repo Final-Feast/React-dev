@@ -1,20 +1,54 @@
-.container{
-    display: flex;
-    flex-direction: row;
-    max-width: 100%;
-    align-items: center;
-    justify-content: space-between;
-}
+@media (min-width: 768px) {
 
-.summaryContainer{
-margin: 94px;
-padding: 100px;
-}
+    .diaryform {
+      margin-top: 10px;
+    }
+    .CalculatorPageContainer {
+      position: relative;
+      height: 100vh;
+    }
+    .CalculatorPageContainer::before {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 50%;
+      background-color: #F0F1F3; 
+    }
+    .diarynav, .diaryform {
+      position: relative;
+      z-index: 99;
+    }
+  }
+  
+  /* DairyPage component for larger screens */
+  @media (min-width: 1024px) {
+    .CalculatorPageContainer {
+      padding: 50px;
+    }
+  
+    .diaryform {
+      margin-top: 50px;
+    }
 
-.PageContainer{
-    max-width: fit-content;
-}
-
-.calculateBox{
-    margin-top: 140px;
-}
+    .CalculatorPageContainer {
+      position: relative;
+      height: 100vh;
+    }
+    
+    .CalculatorPageContainer::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 40%; /* %30 genişlik */
+      height: 100%;
+      background-color: #F0F1F3; 
+    }
+    
+    .diarynav, .diaryform {
+      position: relative;
+      z-index: 99;
+    }
+    
+  }
