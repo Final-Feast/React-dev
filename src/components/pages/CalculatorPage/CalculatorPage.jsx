@@ -3,6 +3,8 @@ import { useLocation } from "react-router-dom";
 import DiaryNav from "../../Navigation/DiaryNav";
 import CalculatorPageForm from "../../CalculatorPageForm/CalculatorPageForm";
 import style from "./CalculatorPage.module.css";
+import Background from '../../Background/index.jsx';
+
 
 
 const CalculatorPage = () => {
@@ -10,6 +12,7 @@ const CalculatorPage = () => {
 
   return (
     <div className={style.CalculatorPageContainer}>
+      <Background />
       <div className={style.diarynav}>  
         <DiaryNav isDiaryPage={location.pathname === "/calculator"} />
       </div>

@@ -9,8 +9,13 @@ const CalculatorPageForm = () => {
   return (
     <div className={style.PageContainer}>
         <div className={style.container}>
-          <CalculateForm  className={style.calculateBox}/>
-          <DiarySummary className={style.summaryContainer} selectedDate={new Date()}  />
+          <div className={style.calculateBox}>
+          <CalculateForm  className={style.calculate}/>
+          </div>
+          <div className={style.summaryContainer}>
+          <DiarySummary className={style.summary} selectedDate={new Date()}  />
+          </div>
+
         </div>
     </div>
   );

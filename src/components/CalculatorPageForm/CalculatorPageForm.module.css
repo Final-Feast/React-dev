@@ -1,14 +1,25 @@
-.container{
-    display: flex;
-    justify-content: space-between; 
-}
-
-.calculateBox{
-    flex:1;
-}
-
 .summaryContainer{
     display: flex;
-    flex:2;
-    width: 50%;
+    z-index: 4;
+    flex-direction: column;
+    padding: 20px;
+    padding-top: 80px;
+    position: relative;
+    flex: 1;
+
+}
+
+@media screen   and (min-width: 1024px) {
+    .container{
+        display: flex;
+    }
+    .summaryContainer{  
+        padding: 40px;
+        padding-top: 0;
+        display: flex
+
+
+    }
+
+    
 }

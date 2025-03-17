@@ -1,6 +1,6 @@
-import logo from "../../assets/svg/slimMomLogo.svg";
-import logoMobile from "../../assets/svg/slimMomLogoMobile.svg";
-import logoText from "../../assets/svg/slimMomLogoText.svg";
+import logo from "../../assets/svg/logo/slimMomLogo.svg";
+import logoMobile from "../../assets/svg/logo/slimMomLogoMobile.svg";
+import logoText from "../../assets/svg/logo/slimMomLogoText.svg";
 import style from "./DiaryNav.module.css";
 import { useNavigate } from "react-router-dom";
 import modalMenu from "../../assets/svg/modal-menu-vektor.svg";

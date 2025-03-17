@@ -16,7 +16,6 @@
     align-items: center;
     padding: 0 20px;
     border-bottom: 2px solid #E0E0E0;
-    cursor: pointer;
 
 }
 
@@ -85,8 +84,12 @@ color: #9B9FAA;
         .userMenu,
         .nav{
             display: flex;
+            
         }
-        
+        .logo{
+    cursor: pointer;
+
+        }
         .nav{
             gap: 20px;
             align-items: center;

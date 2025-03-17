@@ -1,6 +1,4 @@
-.diaryform {
-  
-}
+
 .diaryPageContainer {
   position: relative;
   height: 100vh;
@@ -13,7 +11,7 @@
   height: 52%;
   background-color: #F0F1F3; 
 }
-.diarynav, .diaryform {
+.diarynav {
   position: relative;
   z-index: 99;
 }
@@ -36,7 +34,7 @@
       height: 52%;
       background-color: #F0F1F3; 
     }
-    .diarynav, .diaryform {
+    .diarynav{
       position: relative;
       z-index: 99;
     }
@@ -67,7 +65,7 @@
       background-color: #F0F1F3; 
     }
     
-    .diarynav, .diaryform {
+    .diarynav {
       position: relative;
       z-index: 99;
     }

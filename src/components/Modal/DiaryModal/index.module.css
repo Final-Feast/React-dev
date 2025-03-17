@@ -12,11 +12,13 @@
   display: flex;
   align-items: center;
  flex-direction: column;
+ cursor:default
 
 }
 
 .modal.open {
   transform: translateX(0);
+
 }
 
 .buttonContainer {
@@ -38,6 +40,8 @@
  background-color: transparent;
 
  border: none;
+ cursor: pointer;
+
 }
 
 .button:nth-child(2){
@@ -49,6 +53,8 @@
  background-color: transparent;
  border: none;
 color: white;
+cursor: pointer;
+
 
 }
 

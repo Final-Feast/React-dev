@@ -17,7 +17,7 @@
     display: none;
 }
 .loginButton{
-    background-color:white;
+    background-color:transparent;
     color: #9B9FAA;
     border: none;
     padding: 10px 20px;

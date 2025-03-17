@@ -15,11 +15,11 @@ display: flex;
     padding: 5px;
 }
 
-.userContainer > :last-child{
-    border-left: 2px solid #E0E0E0 ;
-    padding:15px;
+.userContainer > .button:last-child {
     cursor: pointer;
+    z-index: 99;
 }
+
 
 .active {
     color: black;

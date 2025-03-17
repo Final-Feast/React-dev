@@ -28,5 +28,4 @@
     top: 100%;
     left: 50%;
     transform: translate(-50%, -50%); /* Centers the calendar both horizontally and vertically */
-    z-index: 999; /* Ensures the calendar appears on top of other elements */
 }
