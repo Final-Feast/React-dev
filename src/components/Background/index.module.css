@@ -1,39 +1,10 @@
 /* HomePage.module.css */
-
-
-  .strawberry {
-    position:fixed;
-    right: 36px;
-    bottom:65px;
-    z-index: -9998;
-
-
-  }
-  
-  .backshadow {
-    position: absolute;
-    right: 0;
-    bottom:1px;
-    z-index: -9999;
-    width: max-content;
-
-
-  }
-  
-  .banana {
-    position: absolute;
-    top: -70px;
-    right: 0;
-    z-index: -13;
-
-  }
-  
+  .strawberry,
+  .banana,
+  .backshadow,
   .leaf {
-    position: absolute;
-    bottom: 180px;
-    right: 10vw ;
-    z-index: -12;
-
+    display: none;
+    
   }
   .leafAlt{
     display: none;
@@ -41,59 +12,89 @@
 
   
   @media screen and (min-width: 768px) {
-    .strawberry {
-      display: none;
-    }
-  
-    .backshadow {
-      display: none;
-    }
-  
-    .banana {
-      display: none;
-    }
-  
-    .leaf {
-      display: none;
-    }
+
     .leafAlt{
       display: block;
     z-index: -1;
     position: absolute;
     left: 150px;
+    }
 
+    .strawberry {
+      display: block;
 
+      position:absolute;
+      right: 50px;
+      bottom: 200px;
+      z-index: -9998;
+    }
+    .banana {
+      display: block;
 
+      position: absolute;
+      bottom: -150px;
+      right: -10px;
+      z-index: -13;
+      width: 500px;
+  
     }
     
+    .backshadow {
+      display: block;
+
+      position: absolute;
+      right: -50px;
+      bottom:-200px;
+      z-index: -9999;
+      width: max-content;
+    }
+    
+    .leaf {
+      display: block;
+
+      position: absolute;
+      bottom: -180px;
+      right: 5vw ;
+      z-index: -12;
+      transform: rotate(90deg);
+      width: 800px;
+
+    }
   }
 
   @media screen and (min-width: 1024px) {
+    .container {
+      min-width:max-content;
+      overflow: hidden;
+      max-height: 5vh;
+
+    }
     .strawberry {
-        top: 560px;
-        right: 150px;
-        width: 208px;
+        top: 550px;
+        right: 10px;
+        width: 286px;
         height: 253px;
     }
   
     .backshadow {
-      top: 420px;
+      top: 180px;
       right: -30px;
     }
   
     .banana {
-      top: 600px;
-      width: 500px;
+      top: -100px;
+      width: 773px;
+      right: -200px;
     z-index: -11;
 
 
     }
   
     .leaf {
-      top: 300px;
-      right: 25vw;
-      width: 530px;
-      transform: rotate(90deg);
+      top: -100px;
+      right: 15vw;
+      width: 746px;
+      transform: rotate(360deg);
     z-index: -12;
 
     }
@@ -105,3 +106,5 @@
     }
     
   }
+
+  

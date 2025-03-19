@@ -9,7 +9,7 @@ import style from "./index.module.css";
 const Background = () => {
   const location = useLocation();
   const showLeafContainer = location.pathname === "/diary" || location.pathname === "/calculator";
-  const showContainer = location.pathname === "/";
+  const showContainer = location.pathname === "/" || location.pathname === "/login" || location.pathname === "/register";
 
   return (
     <div className={style.background}>
