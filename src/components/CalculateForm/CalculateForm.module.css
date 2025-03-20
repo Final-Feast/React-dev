@@ -4,6 +4,7 @@ input[type="number"] {
     appearance: textfield;
     -webkit-appearance: none;
     appearance: none;
+    outline: none;
   }
   
   .container {
