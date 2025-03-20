@@ -17,7 +17,6 @@ display: flex;
 
 .userContainer > .button:last-child {
     cursor: pointer;
-    z-index: 99;
 }
 
 
