@@ -3,7 +3,7 @@
 import axios from "axios";
 import { setEntries, addEntry, removeEntry } from "./diarySlice";
 
-const API_URL = "/api/diary";
+const API_URL = "http://localhost:3000/api/diary/add";
 
 export const fetchDiaryEntries = (date, token) => async (dispatch) => {
 try {
