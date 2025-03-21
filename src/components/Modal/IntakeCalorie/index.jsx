@@ -2,6 +2,8 @@ import { useEffect } from "react";
 import style from "./index.module.css";
 import { useNavigate } from "react-router-dom";
 import closeVektor from "../../../assets/svg/close-vektor.svg";
+import backButton from "../../../assets/svg/backButton.svg";
+
 
 const Modal = ({ result, onClose }) => {
 
@@ -29,7 +31,11 @@ const Modal = ({ result, onClose }) => {
         <div className={style.overlay} onClick={onClose}>
 
             <div className={style.modal} onClick={(e) => e.stopPropagation()}>
-            <img src={closeVektor} alt="Close" width="12" height="12" className={style.close} onClick={onClose}/> 
+            <img src={closeVektor} alt="Close" width="12" height="12" className={style.close} onClick={onClose}/>
+            <div className={style.backButton}>
+                <img src={backButton} alt="Back" width="12" height="12" className={style.back} onClick={onClose}/> 
+            </div>
+
                 
                 <h2 className={style.title}>Your recommended daily calorie intake is</h2>
                 <p className={style.text}>{result} kcal</p>
