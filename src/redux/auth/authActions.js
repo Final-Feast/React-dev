@@ -3,7 +3,7 @@
 import axios from "axios";
 import { loginSuccess, logout } from "./authSlice";
 
-const API_URL = "/api/auth";
+const API_URL = "http://localhost:3000/api/auth";
 
 export const login = (email, password) => async (dispatch) => {
   try {
