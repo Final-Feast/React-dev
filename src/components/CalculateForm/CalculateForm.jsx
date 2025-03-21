@@ -1,129 +1,155 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import style from "./calculateForm.module.css";
 import intakeCalorie from "../../utils/intakeCalorie";
-import Modal from "../Modal/IntakeCalorie"
-import { useNavigate } from "react-router-dom";
+import Modal from "../Modal/IntakeCalorie";
+import { useSelector } from "react-redux";
+import { selectProducts } from "../../redux/products/productsSelectors";
+import { useDispatch } from "react-redux";
+import { fetchProducts } from "../../redux/products/productsOperation";
 
 const CalculateForm = () => {
-      const navigate = useNavigate();
-    
-    const [formData, setFormData] = useState({
-        height: "",
-        age: "",
-        currentWeight: "",
-        desiredWeight: "",
-        bloodType: "",
+  const products = useSelector(selectProducts);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      await dispatch(fetchProducts());
+    };
+    fetchData();
+  }, []);
+
+
+
+  const [formData, setFormData] = useState({
+    height: "",
+    age: "",
+    currentWeight: "",
+    desiredWeight: "",
+    bloodType: "",
+  });
+
+  const [result, setResult] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const { currentWeight, height, age, desiredWeight } = formData;
+    const calculatedCalories = intakeCalorie({
+      currentWeight,
+      height,
+      age,
+      desiredWeight,
     });
 
-    const [result, setResult] = useState(null);
-    const [isModalOpen, setIsModalOpen] = useState(false);
+    if (!currentWeight || !height || !age || !desiredWeight) {
+      alert("Please fill in all fields!");
+      return;
+    }
 
-    const handleChange = (e) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
-    };
+    setResult(calculatedCalories);
+    setIsModalOpen(true);
+  };
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
+  return (
+    <div className={style.container}>
+      <h2 className={style.title}>
+        Calculate your daily calorie intake right now
+      </h2>
 
-        const { currentWeight, height, age, desiredWeight } = formData;
-        const calculatedCalories = intakeCalorie({ currentWeight, height, age, desiredWeight });
+      <form className={style.form} onSubmit={handleSubmit}>
+        <div className={style.inputGroup}>
+          <div className={style.column1}>
+            <label className={style.label}>
+              <input
+                type="number"
+                name="height"
+                value={formData.height}
+                onChange={handleChange}
+                className={style.input}
+                placeholder="Height*"
+                required
+              />
+            </label>
+            <label className={style.label}>
+              <input
+                type="number"
+                name="age"
+                value={formData.age}
+                onChange={handleChange}
+                className={style.input}
+                placeholder="Age*"
+                required
+              />
+            </label>
+            <label className={style.label}>
+              <input
+                type="number"
+                name="currentWeight"
+                value={formData.currentWeight}
+                onChange={handleChange}
+                className={style.input}
+                placeholder="Current weight*"
+                required
+              />
+            </label>
+          </div>
 
-        if (!currentWeight || !height || !age || !desiredWeight) {
-            alert("Please fill in all fields!");
-            return;
-        }
+          <div className={style.column2}>
+            <label className={style.label}>
+              <input
+                type="number"
+                name="desiredWeight"
+                value={formData.desiredWeight}
+                onChange={handleChange}
+                className={style.input}
+                placeholder="Desired weight*"
+                required
+              />
+            </label>
 
-        setResult(calculatedCalories);
-        setIsModalOpen(true);
-    };
-
-    return (
-        <div className={style.container}>
-            <h2 className={style.title}>Calculate your daily calorie intake right now</h2>
-
-            <form className={style.form} onSubmit={handleSubmit}>
-                <div className={style.inputGroup}>
-                    <div className={style.column1}>
-                        <label className={style.label}>
-                            <input
-                                type="number"
-                                name="height"
-                                value={formData.height}
-                                onChange={handleChange}
-                                className={style.input}
-                                placeholder="Height*"
-                                required
-                            />
-                        </label>
-                        <label className={style.label}>
-                            <input
-                                type="number"
-                                name="age"
-                                value={formData.age}
-                                onChange={handleChange}
-                                className={style.input}
-                                placeholder="Age*"
-                                required
-                            />
-                        </label>
-                        <label className={style.label}>
-                            <input
-                                type="number"
-                                name="currentWeight"
-                                value={formData.currentWeight}
-                                onChange={handleChange}
-                                className={style.input}
-                                placeholder="Current weight*"
-                                required
-                            />
-                        </label>
-                    </div>
-
-                    <div className={style.column2}>
-                        <label className={style.label}>
-                            <input
-                                type="number"
-                                name="desiredWeight"
-                                value={formData.desiredWeight}
-                                onChange={handleChange}
-                                className={style.input}
-                                placeholder="Desired weight*"
-                                required
-                            />
-                        </label>
-
-                        <div className={style.bloodTypeGroup}>
-                            <p className={style.bloodType}>Blood type*</p>
-                            <legend className={style.radioGroup}>
-                                {["A", "B", "AB", "O"].map((type) => (
-                                    <label key={type} className={style.radioLabel}>
-                                        <input
-                                            type="radio"
-                                            name="bloodType"
-                                            value={type}
-                                            checked={formData.bloodType === type}
-                                            onChange={handleChange}
-                                            className={style.radioInput}
-                                            required
-                                        />
-                                        {type}
-                                    </label>
-                                ))}
-                            </legend>
-                        </div>
-                    </div>
-                </div>
-
-                <button className={style.button} type="submit" >
-                    Start losing weight
-                </button>
-            </form>
-
-            {/* {result && <p className={style.result}>Estimated Calories: {result} kcal</p>} */}
-
-            {isModalOpen && <Modal result={result} onClose={() => setIsModalOpen(false)} />}
+            <div className={style.bloodTypeGroup}>
+              <p className={style.bloodType}>Blood type*</p>
+              <legend className={style.radioGroup}>
+                {["A", "B", "AB", "0"].map((type) => (
+                  <label key={type} className={style.radioLabel}>
+                    <input
+                      type="radio"
+                      name="bloodType"
+                      value={type}
+                      checked={formData.bloodType === type}
+                      onChange={handleChange}
+                      className={style.radioInput}
+                      required
+                    />
+                    {type}
+                  </label>
+                ))}
+              </legend>
+            </div>
+          </div>
         </div>
-    );
+
+        <button className={style.button} type="submit">
+          Start losing weight
+        </button>
+      </form>
+
+      {/* {result && <p className={style.result}>Estimated Calories: {result} kcal</p>} */}
+
+      {isModalOpen && (
+        <Modal
+          result={result}
+          formData={formData}
+          onClose={() => setIsModalOpen(false)}
+        />
+      )}
+    </div>
+  );
 };
 
 export default CalculateForm;

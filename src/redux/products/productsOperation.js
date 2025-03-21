@@ -1,10 +1,13 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
+
+const URL = "http://localhost:3000"
+
 export const fetchProducts = createAsyncThunk(
   'products/fetchProducts',
   async (_, thunkAPI) => {
     try {
-      const response = await fetch('/api/products'); // API endpoint'ini kontrol et
+      const response = await fetch(`${URL}/api/products`);
       if (!response.ok) {
         throw new Error('Veri alınamadı');
       }
