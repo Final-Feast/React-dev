@@ -1,7 +1,7 @@
 /* HomePage.module.css */
 .App {
     position: relative; /* İçindeki elemanları konumlandırabilmek için */
-    min-height: 890px;
+    min-height: 100vh;
     overflow: hidden;
   }
 
