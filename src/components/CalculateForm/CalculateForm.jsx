@@ -2,8 +2,11 @@ import { useState } from "react";
 import style from "./calculateForm.module.css";
 import intakeCalorie from "../../utils/intakeCalorie";
 import Modal from "../Modal/IntakeCalorie"
+import { useNavigate } from "react-router-dom";
 
 const CalculateForm = () => {
+      const navigate = useNavigate();
+    
     const [formData, setFormData] = useState({
         height: "",
         age: "",
@@ -111,7 +114,7 @@ const CalculateForm = () => {
                     </div>
                 </div>
 
-                <button className={style.button} type="submit">
+                <button className={style.button} type="submit" >
                     Start losing weight
                 </button>
             </form>

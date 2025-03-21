@@ -15,14 +15,14 @@
 
     .leafAlt{
       display: block;
-    z-index: -1;
-    position: absolute;
-    left: 150px;
+      z-index: -3333;
+      position: absolute;
+      /* left: 150px; */
+      top: 48vh;
     }
 
     .strawberry {
       display: block;
-
       position:absolute;
       right: 50px;
       bottom: 200px;

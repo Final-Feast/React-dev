@@ -19,6 +19,7 @@
     padding-top: 80px ;
     position: relative;
     flex: 1;
+    background-color: #F0F1F3;
 }
 /* Sağ taraf: Özet Bilgiler */
 @media screen and (min-width: 768px) {

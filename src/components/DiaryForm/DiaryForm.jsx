@@ -7,6 +7,7 @@ import {
   deleteDiaryEntry,
 } from "../../redux/diary/diaryActions"; // Redux actionlarını içeri aktar
 import DiaryDateCalendar from "../Diary/DiaryDateCalendar";
+import DiaryAddProduct from "../Diary/DiaryAddProduct";
 import DiaryAddProductForm from "../Diary/DiaryAddProductForm";
 import DiaryProductsList from "../Diary/DiaryProductsList";
 import DiarySummary from "./DiarySummary";
@@ -46,7 +47,7 @@ const DiaryForm = () => {
       {/* Sol Taraf */}
       <div className={styles.leftSection}>
         <DiaryDateCalendar onDateChange={setSelectedDate} />
-        <DiaryAddProductForm onAddProduct={handleAddProduct} />
+        <DiaryAddProduct onAddProduct={handleAddProduct} />
         <DiaryProductsList products={diaryEntries} onDeleteProduct={handleDeleteProduct} />
       </div>
 
