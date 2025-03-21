@@ -1,0 +1,49 @@
+.diaryPageContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Sol taraf: Takvim, Form ve Liste */
+.leftSection {
+    margin-top: 40px;
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-left: 20px;
+}
+.rightSection{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    padding-top: 80px ;
+    position: relative;
+    flex: 1;
+}
+/* Sağ taraf: Özet Bilgiler */
+@media screen and (min-width: 768px) {
+    .rightSection {
+        
+        bottom: -20vw;
+    }
+    
+}
+
+@media screen and (min-width: 1024px) {
+    .diaryPageContainer {
+        flex-direction: row;
+    }
+
+    .leftSection{
+        margin-left: 0;
+    }
+    .rightSection{
+        display: flex;
+        flex-direction: column;
+        padding: 40px;
+        padding-top: 0 ;
+        position: relative;
+        bottom: 0;
+    }
+    
+}

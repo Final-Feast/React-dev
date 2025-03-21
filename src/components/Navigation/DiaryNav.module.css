@@ -1,0 +1,129 @@
+
+.logo,
+.nav{
+    display: none;
+
+}
+.container{
+    display: flex;
+    flex-direction: column;
+
+}
+
+.logoContainer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    border-bottom: 2px solid #E0E0E0;
+
+}
+
+.logoMobileContainer{
+    padding: 20px 10px 10px 10px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    cursor: pointer;
+
+}
+
+ .userMenuTablet{
+display:none} 
+
+.button{
+    font-family: Verdana;
+font-weight: 700;
+font-size: 14px;
+line-height: 100%;
+letter-spacing: 4%;
+color: #9B9FAA;
+
+}
+
+.modalMenuContainer{
+    cursor: pointer;
+}
+
+
+@media screen and (min-width: 768px) {
+    .logo{
+        display: none;
+    }
+    
+    .userMenu{
+        display: none;
+    }
+    .userMenuTablet{
+        display:flex;
+    cursor: pointer;
+        
+    } 
+
+        .userMenuContainer{
+            display: flex;
+            flex-direction: row;
+            gap: 10px;
+            align-items: center;
+            gap:48px
+        }
+        
+}
+
+@media screen and (min-width: 1024px) {
+    .userMenuTablet,
+    .modalMenuContainer,
+    .logoMobileContainer{
+        display:none
+    } 
+
+        .logoContainer{
+            border:none;
+        }
+        .logo,
+        .userMenu,
+        .nav{
+            display: flex;
+            
+        }
+        .logo{
+    cursor: pointer;
+
+        }
+        .nav{
+            gap: 20px;
+            align-items: center;
+            z-index: 99;
+        }
+
+        
+
+        .userMenu{
+            justify-content: flex-end;
+            position: absolute;
+            right: 20px;
+            margin-top:30px;
+
+        }
+
+        
+
+        .button{
+            cursor: pointer;
+            border: none;
+            background-color: transparent;
+            margin-top: 45px;
+        }
+
+        .nav > :nth-child(2){
+            border-left: 2px solid #E0E0E0 ;
+            padding:15px;
+            cursor: pointer;
+        }
+
+        .active {
+            color: black;
+            font-weight: bold;
+        }
+    
+}

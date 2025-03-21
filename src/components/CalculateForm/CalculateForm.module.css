@@ -32,26 +32,13 @@ input[type="number"] {
     height: 30px;
     border: none;
     border-bottom: 1px solid #E0E0E0;
-    -moz-appearance: textfield;
-    -webkit-appearance: none;
     appearance: none;
     margin-bottom: 32px;
     background-color: transparent;
   }
 
-  .input:hover {
-    outline: none;
-    border-bottom: 1px solid #E0E0E0;
 
-  }
   
-  .input:focus {
-    border:none;
-    outline: none;
-    border-bottom: 1px solid #E0E0E0;
-
-
-  }
 
   .input::placeholder {
     font-family: Verdana, sans-serif;
@@ -202,13 +189,17 @@ input[type="number"] {
   .column2 > :last-child {
       order: 2; /* Son çocuk en üste gelir (Blood type) */
   }
+  .button{
+    padding: 13px 25px ;
+    height: max-content;
+  }
   }
   
-  @media (min-width: 1280px) {
+  @media (min-width: 1024px) {
     .button {
       margin: 0 auto;
       left: 400px;
-      position: fixed;
+      position: sticky;
       top: 700px;
 
     }

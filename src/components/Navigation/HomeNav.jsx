@@ -6,6 +6,8 @@ import { useNavigate } from "react-router-dom";
 
 const Nav = () => {
   const navigate = useNavigate();
+
+
   return (
     <div className={style.container} >
         <div className={style.logoContainer}>
@@ -32,8 +34,9 @@ const Nav = () => {
           }`}
           onClick={() => navigate("/register")}
         >
-          REGISTER
+          REGISTRATION
         </button>
+       
       </div>
       
     </div>

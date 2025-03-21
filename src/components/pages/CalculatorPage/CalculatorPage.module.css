@@ -1,0 +1,80 @@
+
+.diaryPageContainer {
+  position: relative;
+  height: 100vh;
+}
+.diaryPageContainer::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 52%;
+  background-color: #F0F1F3; 
+}
+.diarynav {
+  position: relative;
+  z-index: 99;
+}
+
+@media (min-width: 768px) {
+
+    .diaryform {
+      margin-top: 10px;
+    }
+    .CalculatorPageContainer {
+      position: relative;
+      height: 100vh;
+    }
+    .CalculatorPageContainer::before {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 30%;
+      background-color: #F0F1F3; 
+    }
+    .diarynav {
+      position: relative;
+      z-index: 99;
+    }
+  }
+  
+  /* DairyPage component for larger screens */
+  @media (min-width: 1024px) {
+    .CalculatorPageContainer {
+      padding: 50px;
+    }
+  
+    .diaryform {
+      margin-top: 50px;
+    }
+
+    .CalculatorPageContainer {
+      position: relative;
+      height: 89vh;
+    }
+    
+    .CalculatorPageContainer::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 40%;
+      height: 100%;
+      background-color: #F0F1F3; 
+      z-index: -4;
+    }
+    
+    .diarynav {
+      position: relative;
+      z-index: 99;
+    }
+    
+  }
+
+
+  
+  
+
+    
+

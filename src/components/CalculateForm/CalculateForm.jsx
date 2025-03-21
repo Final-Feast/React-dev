@@ -1,5 +1,7 @@
 import { useState } from "react";
 import style from "./calculateForm.module.css";
+import intakeCalorie from "../../utils/intakeCalorie";
+import Modal from "../Modal/IntakeCalorie"
 
 const CalculateForm = () => {
     const [formData, setFormData] = useState({
@@ -11,6 +13,7 @@ const CalculateForm = () => {
     });
 
     const [result, setResult] = useState(null);
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -20,20 +23,15 @@ const CalculateForm = () => {
         e.preventDefault();
 
         const { currentWeight, height, age, desiredWeight } = formData;
+        const calculatedCalories = intakeCalorie({ currentWeight, height, age, desiredWeight });
 
         if (!currentWeight || !height || !age || !desiredWeight) {
             alert("Please fill in all fields!");
             return;
         }
 
-        const kalori =
-            10 * currentWeight +
-            6.25 * height -
-            5 * age -
-            161 -
-            10 * (currentWeight - desiredWeight);
-
-        setResult(kalori.toFixed(2));
+        setResult(calculatedCalories);
+        setIsModalOpen(true);
     };
 
     return (
@@ -118,7 +116,9 @@ const CalculateForm = () => {
                 </button>
             </form>
 
-            {result && <p className={style.result}>Estimated Calories: {result} kcal</p>}
+            {/* {result && <p className={style.result}>Estimated Calories: {result} kcal</p>} */}
+
+            {isModalOpen && <Modal result={result} onClose={() => setIsModalOpen(false)} />}
         </div>
     );
 };

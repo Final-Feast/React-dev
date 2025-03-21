@@ -1,0 +1,29 @@
+.summary {
+    display: flex;
+    flex-direction: column;
+    
+  }
+  
+  .title {
+    font-family: Verdana;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 100%;
+    letter-spacing: 4%;
+  }
+  
+  .textContainer {
+    text-align: left;
+  }
+  
+  .text {
+    display: flex;
+    justify-content: space-between; /* Metin sola, span sağa */
+    align-items: center;
+    width: 100%; /* Satırı tam kaplaması için */
+    color: #9B9FAA;
+
+  }
+
+  
+

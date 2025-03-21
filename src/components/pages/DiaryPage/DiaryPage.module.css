@@ -1,0 +1,79 @@
+
+.diaryPageContainer {
+  position: relative;
+  height: 100vh;
+}
+.diaryPageContainer::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 52%;
+  background-color: #F0F1F3; 
+}
+.diarynav {
+  position: relative;
+  z-index: 99;
+}
+
+
+@media (min-width: 768px) {
+
+    .diaryform {
+      margin-top: 10px;
+    }
+    .diaryPageContainer {
+      position: relative;
+      height: 100vh;
+    }
+    .diaryPageContainer::before {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 52%;
+      background-color: #F0F1F3; 
+    }
+    .diarynav{
+      position: relative;
+      z-index: 99;
+    }
+  }
+  
+  /* DairyPage component for larger screens */
+  @media (min-width: 1024px) {
+    .diaryPageContainer {
+      padding: 50px;
+    }
+  
+    .diaryform {
+      margin-top: 50px;
+    }
+
+    .diaryPageContainer {
+      position: relative;
+      height: 89vh;
+    }
+    
+    .diaryPageContainer::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 40%; /* %30 genişlik */
+      height: 100%;
+      background-color: #F0F1F3; 
+    }
+    
+    .diarynav {
+      position: relative;
+      z-index: 99;
+    }
+    
+  }
+
+  /* .diaryPageContainer {
+  height: 100vh;
+  background: linear-gradient(to left, #f8f9fa 50%, white 50%);
+}
+ */

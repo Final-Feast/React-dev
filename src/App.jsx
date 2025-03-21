@@ -4,13 +4,13 @@ import AppRoutes from "./components/Routes/AppRoutes";
 function App() {
 
   return (
-    <>
+    <div className="App">
     <BrowserRouter>
         
       <AppRoutes />
       
     </BrowserRouter>
-    </>
+    </div>
   )
 }
 
