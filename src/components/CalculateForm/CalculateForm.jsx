@@ -2,13 +2,10 @@ import { useEffect, useState } from "react";
 import style from "./calculateForm.module.css";
 import intakeCalorie from "../../utils/intakeCalorie";
 import Modal from "../Modal/IntakeCalorie";
-import { useSelector } from "react-redux";
-import { selectProducts } from "../../redux/products/productsSelectors";
 import { useDispatch } from "react-redux";
 import { fetchProducts } from "../../redux/products/productsOperation";
 
 const CalculateForm = () => {
-  const products = useSelector(selectProducts);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -17,8 +14,6 @@ const CalculateForm = () => {
     };
     fetchData();
   }, []);
-
-
 
   const [formData, setFormData] = useState({
     height: "",
