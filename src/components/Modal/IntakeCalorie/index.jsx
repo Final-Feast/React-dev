@@ -1,15 +1,17 @@
-import { useEffect } from "react";
+import { use, useEffect } from "react";
 import style from "./index.module.css";
 import { useNavigate } from "react-router-dom";
 import closeVektor from "../../../assets/svg/close-vektor.svg";
 import backButton from "../../../assets/svg/backButton.svg";
 import { useSelector } from "react-redux";
 import { selectProducts } from "../../../redux/products/productsSelectors";
-
+import { useDispatch } from "react-redux";
+import { setNotAllowedFoods } from "../../../redux/products/productsSlice";
 
 const Modal = ({ result, onClose, formData }) => {
-
-    const products = useSelector(selectProducts)
+  const products = useSelector(selectProducts);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const bloodTypes = {
     0: 4,
@@ -18,13 +20,26 @@ const Modal = ({ result, onClose, formData }) => {
     A: 1,
   };
 
-  const isNotAllowed = products?.data.filter(
-    (product) => product.groupBloodNotAllowed[bloodTypes[formData.bloodType]]
-  );
+  const notAllowedFoods = products?.data
+    .filter(
+      (product) =>
+        product.groupBloodNotAllowed[bloodTypes[formData.bloodType]] === true
+    )
+    .map((product) => product.title);
 
-  console.log(isNotAllowed)
+  const getRandomItems = (arr, num) => {
+    const shuffled = [...arr].sort(() => 0.5 - Math.random());
+    return shuffled.slice(0, num);
+  };
 
-  const navigate = useNavigate();
+  const randomNotAllowedFoods = getRandomItems(notAllowedFoods, 4);
+
+  useEffect(() => {
+    if (randomNotAllowedFoods.length > 0) {
+      dispatch(setNotAllowedFoods(randomNotAllowedFoods));
+    }
+    localStorage.setItem("foods", JSON.stringify(randomNotAllowedFoods))
+  }, [randomNotAllowedFoods]);
 
   useEffect(() => {
     const handleKeyDown = (e) => {
@@ -71,9 +86,17 @@ const Modal = ({ result, onClose, formData }) => {
         </h2>
         <p className={style.text}>{result} kcal</p>
         <p className={style.list}> {/*  çizgi */} </p>
-        <p className={style.listText}>Foods you should not eat</p>
+        <div>
+          <p className={style.listText}>Foods you should not eat</p>
 
-        {/* list */}
+          <ul className={style.notAllowedList}>
+            {randomNotAllowedFoods?.map((notAllowed, index) => (
+              <li key={index} className={style.notAllowedItem}>
+                {index + 1}. {notAllowed}
+              </li>
+            ))}
+          </ul>
+        </div>
 
         <button
           className={style.button}

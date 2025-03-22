@@ -1,16 +1,21 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { fetchProducts } from './productsOperation';
+import { createSlice } from "@reduxjs/toolkit";
+import { fetchProducts } from "./productsOperation";
 
 const initialState = {
   items: [],
   isLoading: false,
   error: null,
+  randomNotAllowedFoods: [],
 };
 
 const productsSlice = createSlice({
-  name: 'products',
+  name: "products",
   initialState,
-  reducers: {},
+  reducers: {
+    setNotAllowedFoods: (state, action) => {
+      state.randomNotAllowedFoods = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchProducts.pending, (state) => {
@@ -26,5 +31,7 @@ const productsSlice = createSlice({
       });
   },
 });
+
+export const { setNotAllowedFoods } = productsSlice.actions;
 
 export default productsSlice.reducer;
