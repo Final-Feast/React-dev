@@ -18,12 +18,16 @@
   
   .text {
     display: flex;
-    justify-content: space-between; /* Metin sola, span sağa */
+    justify-content: space-between;
     align-items: center;
-    width: 100%; /* Satırı tam kaplaması için */
+    width: 100%; 
     color: #9B9FAA;
-
+    margin: 0 0 16px 0;
+    text-transform:capitalize;
   }
 
-  
+  .productList{
+    list-style: none;
+    padding: 0;
+  }
 

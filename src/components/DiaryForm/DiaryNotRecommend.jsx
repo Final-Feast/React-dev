@@ -8,12 +8,12 @@ const DiarySummary = () => {
   );
   
   return (
-    <div className={styles.summary}>
+    <div className={styles.productListContainer}>
       <h3 className={styles.title}>Food not recommended</h3>
       <div className={styles.textContainer}>
-        <ul>
+          <ul className={styles.productList} >
           {notAllowedFoods?.map((foods, index) => (
-            <li key={index}>
+            <li key={index} className={styles.text}>
               {index + 1}. {foods}
             </li>
           ))}
