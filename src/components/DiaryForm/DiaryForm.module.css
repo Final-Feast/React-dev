@@ -24,7 +24,11 @@
 /* Sağ taraf: Özet Bilgiler */
 @media screen and (min-width: 768px) {
     .rightSection {
-        
+        background-image: url('../../assets/svg/background/leaf.svg');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position:  -50px center;
+            width: 100%;
     }
     
 }
@@ -32,7 +36,9 @@
 @media screen and (min-width: 1024px) {
     .diaryPageContainer {
         flex-direction: row;
-    }
+            
+          }
+          
 
     .leftSection{
         margin-left: 0;
@@ -44,6 +50,8 @@
         padding-top: 0 ;
         position: relative;
         bottom: 0;
+        background-position:  center;
+
     }
     
 }

@@ -13,14 +13,14 @@
   
   @media screen and (min-width: 768px) {
 
-    .leafAlt{
+    /* .leafAlt{
       display: block;
       z-index: -3333;
-      position: absolute;
+      position: absolute; */
       /* left: 150px; */
-      top: 48vh;
+      /* top: 48vh;
       width: 800px;
-    }
+    } */
 
     .strawberry {
       display: block;
@@ -99,12 +99,8 @@
     z-index: -12;
 
     }
-    .leafAlt{
-      transform: rotate(90deg);
-    left: 500px;
+    
 
-     
-    }
     
   }
 
