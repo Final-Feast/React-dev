@@ -36,8 +36,6 @@ const DiaryDateCalendar = ({ onDateChange }) => {
       }
     };
 
-
-
     document.addEventListener("mousedown", handleClickOutside);
 
     return () => {

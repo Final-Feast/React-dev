@@ -14,6 +14,7 @@ import DiarySummary from "./DiarySummary";
 import styles from "./DiaryForm.module.css";
 
 const DiaryForm = () => {
+  const accessToken = useSelector((state) => state.auth.accessToken);
   const dispatch = useDispatch(); // Redux’a işlem göndermek için kullanılır
   const diaryEntries = useSelector((state) => state.diary.diaryEntries); // Redux'tan veri çekiyoruz
 
@@ -21,24 +22,21 @@ const DiaryForm = () => {
 
   useEffect(() => {
     const formattedDate = selectedDate.toISOString().split("T")[0];
-    const token = localStorage.getItem("token"); // Kullanıcının token'ı varsa al
-    if (token) {
-      dispatch(fetchDiaryEntries(formattedDate, token)); // Redux ile API'den veri çek
+    if (accessToken) {
+      dispatch(fetchDiaryEntries(formattedDate, accessToken)); // Redux ile API'den veri çek
     }
   }, [selectedDate, dispatch]);
 
   const handleAddProduct = async (newProduct) => {
-    const token = localStorage.getItem("token");
-    if (token) {
-      dispatch(addDiaryEntry(newProduct, token)); // Redux'a yeni ürün ekleme işlemi
+    if (accessToken) {
+      dispatch(addDiaryEntry(newProduct, accessToken)); // Redux'a yeni ürün ekleme işlemi
     }
   };
 
   const handleDeleteProduct = (id) => {
-    const token = localStorage.getItem("token");
     const formattedDate = selectedDate.toISOString().split("T")[0];
-    if (token) {
-      dispatch(deleteDiaryEntry(id, formattedDate, token)); // Redux ile ürünü sil
+    if (accessToken) {
+      dispatch(deleteDiaryEntry(id, formattedDate, accessToken)); // Redux ile ürünü sil
     }
   };
 
@@ -48,7 +46,10 @@ const DiaryForm = () => {
       <div className={styles.leftSection}>
         <DiaryDateCalendar onDateChange={setSelectedDate} />
         <DiaryAddProduct onAddProduct={handleAddProduct} />
-        <DiaryProductsList products={diaryEntries} onDeleteProduct={handleDeleteProduct} />
+        <DiaryProductsList
+          products={diaryEntries}
+          onDeleteProduct={handleDeleteProduct}
+        />
       </div>
 
       {/* Sağ Taraf: DiarySummary bileşenini burada kullanıyoruz */}

@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 
 const DiarySummary = () => {
   const notAllowedFoods = useSelector(
-    (state) => state.products.notAllowedFoods
+    (state) => state.products.randomNotAllowedFoods
   );
   
   return (

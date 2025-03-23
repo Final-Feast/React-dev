@@ -8,10 +8,14 @@ import { selectProducts } from "../../../redux/products/productsSelectors";
 import { useDispatch } from "react-redux";
 import { setNotAllowedFoods } from "../../../redux/products/productsSlice";
 
-const Modal = ({ result, onClose, formData }) => {
+const Modal = ({ onClose, formData }) => {
   const products = useSelector(selectProducts);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  const dailyRate = useSelector((state) => state.auth.dailyRate)
+
+  console.log(dailyRate)
 
   const bloodTypes = {
     0: 4,
@@ -84,7 +88,7 @@ const Modal = ({ result, onClose, formData }) => {
         <h2 className={style.title}>
           Your recommended daily calorie intake is
         </h2>
-        <p className={style.text}>{result} kcal</p>
+        <p className={style.text}>{dailyRate} kcal</p>
         <p className={style.list}> {/*  çizgi */} </p>
         <div>
           <p className={style.listText}>Foods you should not eat</p>

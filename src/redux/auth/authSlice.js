@@ -7,6 +7,7 @@ const initialState = {
   accessToken: null,
   refreshToken: null,
   isAuthenticated: false,
+  dailyRate: null,
 };
 
 const authSlice = createSlice({
@@ -19,7 +20,7 @@ const authSlice = createSlice({
       state.refreshToken = action.payload.refreshToken;
       state.isAuthenticated = true;
     },
-    setUser: (state,action) => {
+    setUser: (state, action) => {
       state.user = action.payload.user;
       state.accessToken = action.payload.accessToken;
       state.refreshToken = action.payload.refreshToken;
@@ -31,8 +32,11 @@ const authSlice = createSlice({
       state.refreshToken = null;
       state.isAuthenticated = false;
     },
+    kcalKeeper: (state, action) => {
+      state.dailyRate = action.payload.dailyRate;
+    },
   },
 });
 
-export const { loginSuccess, logout, setUser } = authSlice.actions;
+export const { loginSuccess, logout, setUser, kcalKeeper } = authSlice.actions;
 export default authSlice.reducer;

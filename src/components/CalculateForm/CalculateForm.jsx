@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
 import style from "./calculateForm.module.css";
-import intakeCalorie from "../../utils/intakeCalorie";
 import Modal from "../Modal/IntakeCalorie";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts } from "../../redux/products/productsOperation";
+import { calculaterUser } from "../../redux/auth/authActions";
 
 const CalculateForm = () => {
   const dispatch = useDispatch();
+  const accessToken = useSelector((state) => state.auth.accessToken)
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -23,7 +25,6 @@ const CalculateForm = () => {
     bloodType: "",
   });
 
-  const [result, setResult] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleChange = (e) => {
@@ -34,19 +35,12 @@ const CalculateForm = () => {
     e.preventDefault();
 
     const { currentWeight, height, age, desiredWeight } = formData;
-    const calculatedCalories = intakeCalorie({
-      currentWeight,
-      height,
-      age,
-      desiredWeight,
-    });
 
     if (!currentWeight || !height || !age || !desiredWeight) {
       alert("Please fill in all fields!");
       return;
     }
-
-    setResult(calculatedCalories);
+    dispatch(calculaterUser(formData, accessToken))
     setIsModalOpen(true);
   };
 
@@ -134,11 +128,8 @@ const CalculateForm = () => {
         </button>
       </form>
 
-      {/* {result && <p className={style.result}>Estimated Calories: {result} kcal</p>} */}
-
       {isModalOpen && (
         <Modal
-          result={result}
           formData={formData}
           onClose={() => setIsModalOpen(false)}
         />

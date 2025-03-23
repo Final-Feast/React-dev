@@ -1,16 +1,34 @@
 // store.js: Redux store’unu ve reducer’ları birleştiren dosya.
 
-import { configureStore } from '@reduxjs/toolkit';
-import authReducer from './auth/authSlice';
-import diaryReducer from './diary/diarySlice';
+import { configureStore, combineReducers } from "@reduxjs/toolkit";
+import storage from "redux-persist/lib/storage";
+import { persistReducer, persistStore } from "redux-persist";
+import authReducer from "./auth/authSlice";
+import diaryReducer from "./diary/diarySlice";
 import productsReducer from "./products/productsSlice";
 
-const store = configureStore({
-  reducer: {
-    auth: authReducer,
-    diary: diaryReducer,
-    products: productsReducer
-  },
+const authPersistConfig = {
+  key: "auth",
+  storage,
+  whiteList: ["accessToken"],
+};
+
+const productsPersistConfig = {
+  key: "products",
+  storage,
+  whiteList: ["randomNotAllowedFoods"],
+};
+
+const rootReducer = combineReducers({
+  auth: persistReducer(authPersistConfig, authReducer),
+  diary: diaryReducer,
+  products: persistReducer(productsPersistConfig, productsReducer),
 });
 
-export default store; // Default export yaptık ✅
+export const store = configureStore({
+  reducer: rootReducer,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({ serializableCheck: false }),
+});
+
+export const persistor = persistStore(store);

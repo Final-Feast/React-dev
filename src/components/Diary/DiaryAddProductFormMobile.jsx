@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useEffect } from "react";
 import DiaryNav from "../Navigation/DiaryNav";
-
 import styles from './DiaryAddProductFormMobile.module.css';
 import backButton from "../../assets/svg/backButton.svg";
 

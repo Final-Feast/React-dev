@@ -1,26 +1,13 @@
 import { useEffect, useState } from 'react';
 import styles from './DiaryProductsList.module.css';
+import { useSelector } from 'react-redux'
 
 const ProductList = () => {
-  const [products, setProducts] = useState([]);
   const [error, setError] = useState(null);
 
-  useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const response = await fetch('/api/products'); // Backend API endpoint
-        if (!response.ok) {
-          throw new Error('Veriler alınamadı');
-        }
-        const data = await response.json();
-        setProducts(data); // Gelen veriyi state'e al
-      } catch (err) {
-        setError(err.message);
-      }
-    };
+  const products = useSelector((state) => state.products.items)
 
-    fetchProducts();
-  }, []);
+  console.log(products)
 
   if (error) {
     return <div>Error: {error}</div>;
@@ -30,7 +17,7 @@ const ProductList = () => {
     <div className={styles.productList}>
      
       <ul>
-        {products.map((product) => (
+        {products?.data.map((product) => (
           <li key={product._id} className={styles.productItem}>
             <h2 className={styles.productTitle}>{product.title}</h2>
             <p className={styles.productCategory}>Category: {product.categories}</p>
