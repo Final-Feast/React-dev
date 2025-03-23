@@ -12,7 +12,7 @@ import DiaryAddProductForm from "../Diary/DiaryAddProductForm";
 import DiaryProductsList from "../Diary/DiaryProductsList";
 import DiarySummary from "./DiarySummary";
 import styles from "./DiaryForm.module.css";
-// import { setEntry } from "../../redux/diary/diarySlice";
+import { addDate } from "../../redux/diary/diarySlice";
 
 const DiaryForm = () => {
   const accessToken = useSelector((state) => state.auth.accessToken);
@@ -27,7 +27,7 @@ const DiaryForm = () => {
       .split(".")
       .reverse()
       .join("-");
-    // dispatch(setEntry({ date: formattedDate }));
+    dispatch(addDate(formattedDate));
     if (accessToken) {
       dispatch(fetchDiaryEntries(formattedDate, accessToken)); // Redux ile API'den veri çek
     }

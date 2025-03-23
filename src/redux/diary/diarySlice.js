@@ -4,6 +4,8 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   diaryEntries: [],
+  date: null,
+  summary: null,
   loading: false,
 };
 
@@ -14,8 +16,11 @@ const diarySlice = createSlice({
     setEntries: (state, action) => {
       state.diaryEntries = action.payload;
     },
+    addDate: (state, action) => {
+      state.date = action.payload;
+    },
     addEntry: (state, action) => {
-      state.diaryEntries.push(action.payload);
+      state.diaryEntries = [...state.diaryEntries, action.payload];
     },
     removeEntry: (state, action) => {
       state.diaryEntries = state.diaryEntries.filter(
@@ -25,5 +30,5 @@ const diarySlice = createSlice({
   },
 });
 
-export const { setEntries, addEntry, removeEntry } = diarySlice.actions;
+export const { setEntries, addEntry, removeEntry, addDate } = diarySlice.actions;
 export default diarySlice.reducer;
