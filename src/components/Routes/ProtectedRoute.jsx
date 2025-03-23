@@ -6,11 +6,12 @@ export default function ProtectedRoute() {
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   const auth = useSelector((state) => state.auth);
 
-  const age = useSelector((state) => state.auth.age);
+  const age = useSelector((state) => state.auth.user.age);
   const location = useLocation();
   useEffect(() => {
     console.log("Auth : ", auth);
-  }, [auth]);
+    console.log("isAuth New : ", isAuthenticated);
+  }, [auth, isAuthenticated]);
   if (!isAuthenticated) {
     return <Navigate to="/login" state={{ from: location }} replace />;
   }

@@ -1,7 +1,13 @@
 // authActions.js: Login ve register API isteklerini yöneten fonksiyonlar.
 
 import axios from "axios";
-import { loginSuccess, logout, setUser, kcalKeeper } from "./authSlice";
+import {
+  loginSuccess,
+  logout,
+  setUser,
+  kcalKeeper,
+  setIsAuthenticated,
+} from "./authSlice";
 import { toast, Bounce } from "react-toastify";
 const API_URL = "http://localhost:3000/api/auth";
 
@@ -12,7 +18,7 @@ export const login = (email, password) => async (dispatch) => {
 
     await dispatch(
       loginSuccess({
-        user: { name: response.data.name, email: response.data.email },
+        user: response.data.user,
         accessToken: response.data.accessToken,
         refreshToken: response.data.refreshToken,
       })
@@ -45,36 +51,36 @@ export const login = (email, password) => async (dispatch) => {
 };
 
 export const getUser = (token) => async (dispatch) => {
-  try {
-    if (!token) {
-      return { success: false };
-    }
-
-    const response = await axios.get(`${API_URL}/user`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
-    if (response.status === 200 || response.status === 201) {
-      const userData = response.data.data || response.data;
-      dispatch(
-        setUser({
-          user: {
-            name: userData.name,
-            email: userData.email,
-          },
-        })
-      );
-      return { success: true };
-    }
+  // try {
+  if (!token) {
+    await dispatch(setIsAuthenticated(false));
     return { success: false };
-  } catch (error) {
-    console.error("Kullanıcı bilgisi alma hatası:", error);
-    if (error.response && error.response.status === 401) {
-      dispatch(logout());
-    }
-    return { success: false, error };
   }
+
+  const response = await axios.get(`${API_URL}/user`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  if (response.status === 200 || response.status === 201) {
+    const userData = response.data.data.user;
+    const refreshToken = response.data.data.refreshToken;
+    dispatch(
+      setUser({
+        user: userData,
+        refreshToken,
+      })
+    );
+    return { success: true };
+  }
+  return { success: false };
+  // } catch (error) {
+  //   console.error("Kullanıcı bilgisi alma hatası:", error);
+  //   if (error.response && error.response.status === 401) {
+  //     dispatch(logout());
+  //   }
+  //   return { success: false, error };
+  // }
 };
 
 export const register = (name, email, password) => async () => {

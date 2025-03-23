@@ -22,7 +22,6 @@ const authSlice = createSlice({
     },
     setUser: (state, action) => {
       state.user = action.payload.user;
-      state.accessToken = action.payload.accessToken;
       state.refreshToken = action.payload.refreshToken;
       state.isAuthenticated = true;
     },
@@ -35,8 +34,12 @@ const authSlice = createSlice({
     kcalKeeper: (state, action) => {
       state.dailyRate = action.payload.dailyRate;
     },
+    setIsAuthenticated: (state, action) => {
+      state.isAuthenticated = action.payload;
+    },
   },
 });
 
-export const { loginSuccess, logout, setUser, kcalKeeper } = authSlice.actions;
+export const { loginSuccess, logout, setUser, kcalKeeper, setIsAuthenticated } =
+  authSlice.actions;
 export default authSlice.reducer;

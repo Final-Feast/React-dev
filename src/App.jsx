@@ -24,11 +24,14 @@ function App() {
 
   return (
     <div className="App">
-      {isLoading && <Loading />}
-      <BrowserRouter>
-        <AppRoutes />
-      </BrowserRouter>
-      <ToastContainer />
+      {!isLoading && (
+        <>
+          <BrowserRouter>
+            <AppRoutes />
+          </BrowserRouter>
+          <ToastContainer />
+        </>
+      )}
     </div>
   );
 }
