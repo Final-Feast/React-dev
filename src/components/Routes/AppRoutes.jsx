@@ -16,12 +16,12 @@ export default function AppRoutes() {
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <Routes>
-        <Route path="/" element={<HomePage />} />
         <Route element={<DefaultRoute />}>
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
         </Route>
         <Route element={<ProtectedRoute />}>
+          <Route path="/" element={<HomePage />} />
           <Route path="/diary" element={<DiaryPage />} />
           <Route path="/calculator" element={<CalculatorPage />} />
         </Route>

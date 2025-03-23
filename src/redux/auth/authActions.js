@@ -2,12 +2,14 @@
 
 import axios from "axios";
 import { loginSuccess, logout, setUser, kcalKeeper } from "./authSlice";
-
+import { toast, Bounce } from "react-toastify";
 const API_URL = "http://localhost:3000/api/auth";
 
 export const login = (email, password) => async (dispatch) => {
   try {
     const response = await axios.post(`${API_URL}/login`, { email, password });
+    console.log("Response : ", response);
+
     await dispatch(
       loginSuccess({
         user: { name: response.data.name, email: response.data.email },
@@ -15,8 +17,30 @@ export const login = (email, password) => async (dispatch) => {
         refreshToken: response.data.refreshToken,
       })
     );
+    toast.success("Giriş başarılı", {
+      position: "bottom-right",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: false,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+      transition: Bounce,
+    });
   } catch (error) {
-    console.error("Login error:", error);
+    toast.error("Kullanıcı veya şifre yanlış", {
+      position: "bottom-right",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: false,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+      transition: Bounce,
+    });
+    console.error("Giriş hatası", error);
   }
 };
 
@@ -76,9 +100,11 @@ export const calculaterUser = (formData, token) => async (dispatch) => {
 
     console.log("Response:", response.data);
 
-    await dispatch(kcalKeeper({
-      dailyRate: response.data.data.dailyRate
-    }));
+    await dispatch(
+      kcalKeeper({
+        dailyRate: response.data.data.dailyRate,
+      })
+    );
 
     return response.data;
   } catch (error) {
