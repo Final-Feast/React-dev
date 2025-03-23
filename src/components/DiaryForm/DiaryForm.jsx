@@ -12,6 +12,7 @@ import DiaryAddProductForm from "../Diary/DiaryAddProductForm";
 import DiaryProductsList from "../Diary/DiaryProductsList";
 import DiarySummary from "./DiarySummary";
 import styles from "./DiaryForm.module.css";
+import { setEntry } from "../../redux/diary/diarySlice";
 
 const DiaryForm = () => {
   const accessToken = useSelector((state) => state.auth.accessToken);
@@ -21,8 +22,12 @@ const DiaryForm = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
 
   useEffect(() => {
-    const formattedDate = selectedDate.toLocaleDateString("tr-TR");
-    console.log(formattedDate)
+    const formattedDate = new Date(selectedDate)
+      .toLocaleDateString("tr-TR")
+      .split(".")
+      .reverse()
+      .join("-");
+      dispatch(setEntry({ date: formattedDate }));
     if (accessToken) {
       dispatch(fetchDiaryEntries(formattedDate, accessToken)); // Redux ile API'den veri çek
     }

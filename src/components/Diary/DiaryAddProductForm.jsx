@@ -34,7 +34,7 @@ const DiaryAddProductForm = () => {
       calories: (selectedProduct.calories * amount) / 100
     };
     
-    console.log('Eklenecek ürün:', productEntry);
+    console.log( productEntry);
     setSearchTerm('');
     setAmount('');
     setSelectedProduct(null);
