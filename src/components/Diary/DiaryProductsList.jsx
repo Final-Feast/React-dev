@@ -14,28 +14,32 @@ const ProductList = () => {
   }
 
   return (
-    <div className={styles.productList}>
+    <div className={styles.productListContainer}>
      
-      <ul>
+      <ul className={styles.productList}>
         {products?.data.map((product) => (
           <li key={product._id} className={styles.productItem}>
-            <h2 className={styles.productTitle}>{product.title}</h2>
-            <p className={styles.productCategory}>Category: {product.categories}</p>
-            <p className={styles.productWeight}>Weight: {product.weight}g</p>
-            <p className={styles.productCalories}>Calories: {product.calories}</p>
+            <h2 className={styles.title}>{product.title}</h2>
+            <div className={styles.textContainer}>
+            
+            <p className={styles.text}>Category: {product.categories}</p>
+            <p className={styles.text}>Weight: {product.weight}g</p>
+            <p className={styles.text}>Calories: {product.calories}</p>
             {product.groupBloodNotAllowed && (
-              <p className={styles.bloodGroups}>
+              <p className={styles.text}>
                 Not Allowed Blood Groups:
                 {product.groupBloodNotAllowed.map(
                   (isAllowed, index) =>
                     !isAllowed && (
-                      <span key={index} className={styles.bloodGroup}>
-                        Group {index}
+                      <span key={index} className={styles.text}>
+                        Group {index}, 
                       </span>
                     )
                 )}
               </p>
             )}
+            </div>
+
           </li>
         ))}
       </ul>
