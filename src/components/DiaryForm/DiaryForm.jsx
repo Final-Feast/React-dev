@@ -21,7 +21,8 @@ const DiaryForm = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
 
   useEffect(() => {
-    const formattedDate = selectedDate.toISOString().split("T")[0];
+    const formattedDate = selectedDate.toLocaleDateString("tr-TR");
+    console.log(formattedDate)
     if (accessToken) {
       dispatch(fetchDiaryEntries(formattedDate, accessToken)); // Redux ile API'den veri çek
     }

@@ -1,57 +1,99 @@
-import { useState } from 'react';
-import styles from './DiaryAddProductForm.module.css';
+import { useState } from "react";
+import styles from "./DiaryAddProductForm.module.css";
+import { useDispatch } from "react-redux";
+import { filterProductsByText } from "../../redux/products/productsOperation";
+import { useSelector } from "react-redux";
 // import Mobile from 'DiaryAddProductFormMobile'
 
-const DiaryAddProductForm = ({ onAddProduct }) => {
-  const [productName, setProductName] = useState('');
+const DiaryAddProductForm = () => {
+  const [searchTerm, setSearchTerm] = useState('');
   const [amount, setAmount] = useState('');
+  const [isDropdownVisible, setIsDropdownVisible] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState(null); // Seçilen ürünü saklama
+  const dispatch = useDispatch();
+  
+  // Redux store'dan arama sonuçlarını almak
+  const { filteredItems} = useSelector(state => state.products);
 
-  // Ekran boyutunu kontrol etmek için useEffect
-
-
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    if (!productName || !amount) return;
-  
-    const newProduct = {
-      title: productName,
-      weight: Number(amount),
-      date: new Date().toISOString().split('T')[0], // YYYY-MM-DD formatında tarih
-    };
-  
-    try {
-      const response = await fetch('/api/diary/add', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(newProduct),
-      });
-  
-      if (!response.ok) {
-        throw new Error('Ürün eklenirken hata oluştu');
-      }
-  
-      console.log('Product added:', newProduct);
-      onAddProduct(newProduct);
-  
-      setProductName('');
-      setAmount('');
-    } catch (error) {
-      console.error(error);
+    
+    if (!selectedProduct) {
+      alert('Lütfen bir ürün seçin');
+      return;
     }
+    
+    if (!amount || amount <= 0) {
+      alert('Lütfen geçerli bir miktar girin');
+      return;
+    }
+    
+    const productEntry = {
+      productName: selectedProduct.title,
+      amount: Number(amount),
+      calories: (selectedProduct.calories * amount) / 100
+    };
+    
+    console.log('Eklenecek ürün:', productEntry);
+    setSearchTerm('');
+    setAmount('');
+    setSelectedProduct(null);
   };
 
+  const handleSearch = (e) => {
+    const value = e.target.value;
+    setSearchTerm(value);
+    setSelectedProduct(null);
+    
+    if (value.trim().length > 2) {
+      dispatch(filterProductsByText(value));
+      setIsDropdownVisible(true);
+    } else {
+      setIsDropdownVisible(false);
+    }
+  };
+  const handleSelectProduct = (product) => {
+    setSearchTerm(product.title);
+    setSelectedProduct(product);
+    setIsDropdownVisible(false);
+  };
+
+  const renderNutritionInfo = () => {
+    if (!selectedProduct) return null;
+    
+  };
   return (
     <div className={styles.container}>
       <form className={styles.form} onSubmit={handleSubmit}>
-        <input
-          className={styles.input}
-          type="text"
-          placeholder="Enter product name"
-          value={productName}
-          onChange={(e) => setProductName(e.target.value)}
-        />
+        <div className={styles.searchContainer}>
+          <input
+            className={styles.input}
+            type="text"
+            placeholder="Enter product name"
+            value={searchTerm}
+            onChange={handleSearch}
+            onFocus={() => searchTerm.trim().length > 2 && setIsDropdownVisible(true)}
+            onBlur={() => setTimeout(() => setIsDropdownVisible(false), 200)}
+          />
+          
+          {/* Dropdown menü */}
+          {isDropdownVisible && filteredItems && filteredItems.length > 0 && (
+            <div className={styles.dropdown}>
+              {filteredItems.map((product) => (
+                <div 
+                  key={product._id} 
+                  className={styles.dropdownItem}
+                  onClick={() => handleSelectProduct(product)}
+                >
+                  <span>{product.title}</span>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+
+        {renderNutritionInfo()}
+
         <input
           className={styles.input}
           type="number"
@@ -59,8 +101,15 @@ const DiaryAddProductForm = ({ onAddProduct }) => {
           value={amount}
           onChange={(e) => setAmount(e.target.value)}
         />
+        
         <div className={styles.buttonContainer}>
-          <button className={styles.button} type="submit">+</button>
+          <button 
+            className={styles.button} 
+            type="submit"
+            disabled={!selectedProduct || !amount || amount <= 0}
+          >
+            +
+          </button>
         </div>
       </form>
     </div>
@@ -68,10 +117,7 @@ const DiaryAddProductForm = ({ onAddProduct }) => {
 };
 export default DiaryAddProductForm;
 
-
-
-// eğer DiaryAddProductFormMobile renderlanacaksa bu kod ancak sadece form geliyor 
-
+// eğer DiaryAddProductFormMobile renderlanacaksa bu kod ancak sadece form geliyor
 
 // import { useState, useEffect } from 'react';
 // import { useNavigate } from 'react-router-dom';
@@ -90,7 +136,7 @@ export default DiaryAddProductForm;
 //     };
 
 //     window.addEventListener('resize', handleResize);
-    
+
 //     return () => window.removeEventListener('resize', handleResize);
 //   }, []);
 

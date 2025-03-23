@@ -1,11 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchProducts } from "./productsOperation";
+import { fetchProducts, filterProductsByText } from "./productsOperation";
 
 const initialState = {
   items: [],
   isLoading: false,
   error: null,
   randomNotAllowedFoods: [],
+  filteredItems: [],
+  statusFilteredItems: "",
 };
 
 const productsSlice = createSlice({
@@ -28,6 +30,12 @@ const productsSlice = createSlice({
       .addCase(fetchProducts.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
+      })
+      .addCase(filterProductsByText.fulfilled, (state, action) => {
+        state.filteredItems = action.payload.data;
+      })
+      .addCase(filterProductsByText.rejected, (state) => {
+        state.statusFilteredItems = "rejected";
       });
   },
 });

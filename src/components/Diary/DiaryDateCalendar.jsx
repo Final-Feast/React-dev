@@ -20,12 +20,11 @@ const DiaryDateCalendar = ({ onDateChange }) => {
     setIsCalendarVisible(!isCalendarVisible);
   };
 
-  // Date formatting function
   const formatDate = (date) => {
     const day = date.getDate().toString().padStart(2, "0");
     const month = (date.getMonth() + 1).toString().padStart(2, "0");
     const year = date.getFullYear();
-    return `${day}.${month}.${year}`;
+    return `${year}-${month}-${day}`;
   };
 
   // Close calendar on pressing 'Esc' or clicking outside
