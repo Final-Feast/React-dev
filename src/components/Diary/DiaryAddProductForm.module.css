@@ -70,6 +70,7 @@ form:nth-last-child(1) .input[type="number"] {
   position: absolute;
   max-height: 200px;
   overflow-y: auto;
+  
   max-width: 300px;
   background: white;
   border: 1px solid #ccc;
