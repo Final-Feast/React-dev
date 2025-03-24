@@ -17,11 +17,11 @@ export default function AppRoutes() {
     <Suspense fallback={<div>Loading...</div>}>
       <Routes>
         <Route element={<DefaultRoute />}>
+        <Route path="/" element={<HomePage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
         </Route>
         <Route element={<ProtectedRoute />}>
-          <Route path="/" element={<HomePage />} />
           <Route path="/diary" element={<DiaryPage />} />
           <Route path="/calculator" element={<CalculatorPage />} />
         </Route>

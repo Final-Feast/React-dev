@@ -1,24 +1,65 @@
+.PageContainer{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+.calculateBox{
+}
+
+.summaryContainer{
+    background-color: #F0F1F3;
+    padding: 20px;
+
+}
+@media screen   and (min-width: 768px) {
+    .summaryContainer{
+        background-image: url('../../assets/svg/background/leaf.svg');
+            background-size:cover;
+            background-repeat: no-repeat;
+            background-position:   center;
+    }
+}
+
+@media screen   and (min-width: 1024px) {
+    .PageContainer{
+    flex-direction: row;
+    justify-content: space-between;
+
+    }
+    .summaryContainer{
+        width: 450px;
+        padding: 40px;
+        padding-top:0;
+    }
+    
+}
+
+
+
+
+
+
+
+
+
+
 .summaryContainer{
     display: flex;
-    z-index: 4;
     flex-direction: column;
     padding: 20px;
     padding-top: 80px;
     position: relative;
-    flex: 1;
-
 }
 
 @media screen   and (min-width: 1024px) {
     .container{
         display: flex;
+        min-width: 900px;
     }
     .summaryContainer{  
         padding: 40px;
         padding-top: 0;
         display: flex
-
-
     }
 
     
