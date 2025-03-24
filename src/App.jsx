@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import { getUser } from "./redux/auth/authActions";
 import { ToastContainer } from "react-toastify";
+import { fetchProducts } from "./redux/products/productsOperation";
 function App() {
   const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState(true);
@@ -14,6 +15,7 @@ function App() {
     (async () => {
       try {
         await dispatch(getUser(accessToken));
+        await dispatch(fetchProducts());
       } catch (err) {
         console.error(err);
       } finally {

@@ -14,7 +14,6 @@ const API_URL = "https://diary-list-node-api.onrender.com/api/auth";
 export const login = (email, password) => async (dispatch) => {
   try {
     const response = await axios.post(`${API_URL}/login`, { email, password });
-    console.log("Response : ", response);
 
     await dispatch(
       loginSuccess({
@@ -103,8 +102,6 @@ export const calculaterUser = (formData, token) => async (dispatch) => {
         "Content-Type": "application/json",
       },
     });
-
-    console.log("Response:", response.data);
 
     await dispatch(
       kcalKeeper({

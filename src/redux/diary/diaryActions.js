@@ -7,19 +7,29 @@ import { Bounce, toast } from "react-toastify";
 const API_URL = "https://diary-list-node-api.onrender.com/api/diary";
 
 export const fetchDiaryEntries = (date) => async (dispatch, getState) => {
-  const token = getState().auth.accessToken;
   try {
-    const response = await axios.get(`${API_URL}/${date}`, {
-      headers: { Authorization: `Bearer ${token}` },
-    });
-    await dispatch(setEntries(response.data.products ?? []));
-    await dispatch(setSummary(response.data.summary ?? []));
+    if (date) {
+      const token = getState().auth.accessToken;
+
+      const response = await axios.get(`${API_URL}/${date}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+
+      // Başarılı yanıt için
+      await dispatch(setEntries(response.data.products ?? []));
+      await dispatch(setSummary(response.data.summary ?? []));
+    }
   } catch (error) {
+    // Hata durumunda
     if (error.response?.status === 404) {
       console.warn("Diary Bulunamadi");
       await dispatch(setEntries([]));
+      await dispatch(setSummary([]));
     } else {
       console.error("Fetch diary error:", error);
+      // İsteğe bağlı: hata durumunda boş liste gönderme
+      await dispatch(setEntries([]));
+      await dispatch(setSummary([]));
     }
   }
 };
