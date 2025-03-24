@@ -8,7 +8,6 @@ import {
 } from "../../redux/diary/diaryActions"; // Redux actionlarını içeri aktar
 import DiaryDateCalendar from "../Diary/DiaryDateCalendar";
 import DiaryAddProduct from "../Diary/DiaryAddProduct";
-import DiaryAddProductForm from "../Diary/DiaryAddProductForm";
 import DiaryProductsList from "../Diary/DiaryProductsList";
 import DiarySummary from "./DiarySummary";
 import styles from "./DiaryForm.module.css";

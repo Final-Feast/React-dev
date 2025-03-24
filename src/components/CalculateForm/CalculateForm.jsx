@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import style from "./calculateForm.module.css";
+import style from "./CalculateForm.module.css";
 import Modal from "../Modal/IntakeCalorie";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts } from "../../redux/products/productsOperation";
