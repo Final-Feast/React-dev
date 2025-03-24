@@ -20,13 +20,17 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
+  
+  justify-content: space-between;
 }
 
 form:nth-last-child(1) .input[type="number"] {
   text-align: right;
 }
+
+
+
 .input {
-  width: 100%;
   height: 30px;
   position: relative;
   border: none;
@@ -107,6 +111,9 @@ form:nth-last-child(1) .input[type="number"] {
     gap: 22px;
     width: 80%;
   }
+  #searchInput {
+    width:240px;
+  }
 }
 
 @media screen and (min-width: 1024px) {
@@ -116,4 +123,10 @@ form:nth-last-child(1) .input[type="number"] {
   .button {
     margin-left: 60px;
   }
+  #searchInput {
+    width:240px
+  }
+}
+#searchInput {
+  width:240px
 }

@@ -74,6 +74,7 @@ const DiaryAddProductForm = () => {
         <div className={styles.searchContainer}>
           <input
             className={styles.input}
+            id="searchInput"
             type="text"
             placeholder="Enter product name"
             value={searchTerm}
