@@ -16,6 +16,12 @@
   }
   
   .text {
+    font-family: Verdana;
+font-weight: 400;
+font-size: 14px;
+line-height: 100%;
+letter-spacing: 4%;
+
     display: flex;
     justify-content: space-between;
     align-items: center;
