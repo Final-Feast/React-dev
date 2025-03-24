@@ -7,11 +7,43 @@ import Background from "../../Background/index.jsx";
 import { useDispatch } from "react-redux";
 import { fetchDiaryEntries } from "../../../redux/diary/diaryActions.js";
 import { useSelector } from "react-redux";
+import { setNotAllowedFoods } from "../../../redux/products/productsSlice.js";
+import { selectProducts } from "../../../redux/products/productsSelectors.js";
 
 const DiaryPage = () => {
   const location = useLocation();
   const dispatch = useDispatch();
   const diaryDate = useSelector((state) => state.diary.date);
+  const products = useSelector(selectProducts);
+
+  const { user } = useSelector((state) => state.auth.user);
+
+  const bloodTypes = {
+    0: 4,
+    AB: 3,
+    B: 2,
+    A: 1,
+  };
+
+  const notAllowedFoods = products?.data
+    .filter(
+      (product) =>
+        product.groupBloodNotAllowed[bloodTypes[user?.bloodType]] === true
+    )
+    .map((product) => product.title);
+
+  const getRandomItems = (arr, num) => {
+    const shuffled = [...arr].sort(() => 0.5 - Math.random());
+    return shuffled.slice(0, num);
+  };
+
+  const randomNotAllowedFoods = getRandomItems(notAllowedFoods, 4);
+
+  useEffect(() => {
+    if (randomNotAllowedFoods.length > 0) {
+      dispatch(setNotAllowedFoods(randomNotAllowedFoods));
+    }
+  }, [randomNotAllowedFoods]);
 
   useEffect(() => {
     dispatch(fetchDiaryEntries(diaryDate));

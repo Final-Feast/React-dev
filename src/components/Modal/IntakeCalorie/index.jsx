@@ -1,4 +1,4 @@
-import { use, useEffect } from "react";
+import {  useEffect } from "react";
 import style from "./index.module.css";
 import { useNavigate } from "react-router-dom";
 import closeVektor from "../../../assets/svg/close-vektor.svg";
@@ -14,8 +14,6 @@ const Modal = ({ onClose, formData }) => {
   const dispatch = useDispatch();
 
   const dailyRate = useSelector((state) => state.auth.dailyRate)
-
-  console.log(dailyRate)
 
   const bloodTypes = {
     0: 4,
@@ -42,7 +40,6 @@ const Modal = ({ onClose, formData }) => {
     if (randomNotAllowedFoods.length > 0) {
       dispatch(setNotAllowedFoods(randomNotAllowedFoods));
     }
-    localStorage.setItem("foods", JSON.stringify(randomNotAllowedFoods))
   }, [randomNotAllowedFoods]);
 
   useEffect(() => {
