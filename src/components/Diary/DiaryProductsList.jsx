@@ -1,12 +1,9 @@
-import { useEffect, useState } from "react";
 import styles from "./DiaryProductsList.module.css";
 import { useSelector } from "react-redux";
 import DiaryProductsListItem from "./DiaryProductsListItem";
 
 const ProductList = () => {
-  const [isLoading, setIsLoading] = useState(true);
   const diaryEntries = useSelector((state) => state.diary.diaryEntries);
-  
 
   return (
     <div className={styles.productListContainer}>
