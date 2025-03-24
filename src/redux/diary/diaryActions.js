@@ -1,7 +1,7 @@
 // diaryActions.js: Günlük ekleme, silme ve listeleme işlemleri için API isteklerini yöneten fonksiyonlar.
 
 import axios from "axios";
-import { setEntries, addEntry, removeEntry } from "./diarySlice";
+import { setEntries, setSummary, removeEntry } from "./diarySlice";
 import { Bounce, toast } from "react-toastify";
 
 const API_URL = "http://localhost:3000/api/diary";
@@ -13,6 +13,7 @@ export const fetchDiaryEntries = (date) => async (dispatch, getState) => {
       headers: { Authorization: `Bearer ${token}` },
     });
     await dispatch(setEntries(response.data.products ?? []));
+    await dispatch(setSummary(response.data.summary ?? []));
   } catch (error) {
     if (error.response?.status === 404) {
       console.warn("Diary Bulunamadi");

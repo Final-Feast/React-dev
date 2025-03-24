@@ -16,6 +16,9 @@ const diarySlice = createSlice({
     setEntries: (state, action) => {
       state.diaryEntries = action.payload;
     },
+    setSummary:(state, action) => {
+      state.summary = action.payload
+    },
     addDate: (state, action) => {
       state.date = action.payload;
     },
@@ -30,5 +33,5 @@ const diarySlice = createSlice({
   },
 });
 
-export const { setEntries, addEntry, removeEntry, addDate } = diarySlice.actions;
+export const { setEntries, addEntry, removeEntry, addDate, setSummary } = diarySlice.actions;
 export default diarySlice.reducer;

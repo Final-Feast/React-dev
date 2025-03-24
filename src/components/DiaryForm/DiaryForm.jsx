@@ -42,7 +42,7 @@ const DiaryForm = () => {
   const handleDeleteProduct = (id) => {
     const formattedDate = selectedDate.toISOString().split("T")[0];
     if (accessToken) {
-      dispatch(deleteDiaryEntry(id, formattedDate, accessToken)); // Redux ile ürünü sil
+      dispatch(deleteDiaryEntry(id, formattedDate, accessToken));
     }
   };
 

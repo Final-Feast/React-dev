@@ -28,6 +28,7 @@ form:nth-last-child(1) .input[type="number"] {
 .input {
   width: 100%;
   height: 30px;
+  position: relative;
   border: none;
   border-bottom: 1px solid #e0e0e0;
   appearance: none;
@@ -60,11 +61,12 @@ form:nth-last-child(1) .input[type="number"] {
 
 
 .dropdown {
-  top: 100%;
   left: 0;
   right: 0;
+  position: absolute;
   max-height: 200px;
   overflow-y: auto;
+  max-width: 300px;
   background: white;
   border: 1px solid #ccc;
   border-radius: 4px;
