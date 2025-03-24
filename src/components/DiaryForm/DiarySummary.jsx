@@ -14,18 +14,18 @@ const DiarySummary = ({ selectedDate }) => {
         </h3>
         <div className={styles.textContainer}>
           <p className={styles.text}>
-            Left {summary?.left} <span>{""}kcal</span>{" "}
+            Left <span> {summary?.left} {""}kcal</span>{" "}
           </p>
           <p className={styles.text}>
-            Consumed {summary?.consumed}
-            <span>{""}kcal</span>{" "}
+          Consumed <span> {summary?.consumed}
+            {""}kcal</span>{" "}
           </p>
           <p className={styles.text}>
-            Daily rate {summary?.dailyRate}
-            <span>{""}kcal</span>{" "}
+          Daily rate <span> {summary?.dailyRate}
+            {""}kcal</span>{" "}
           </p>
           <p className={styles.text}>
-            n% of normal {summary?.percentOfDailyRate} <span>{""}%</span>{" "}
+          n% of normal <span> {summary?.percentOfDailyRate} {""}%</span>{" "}
           </p>
         </div>
       </div>
