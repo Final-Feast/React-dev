@@ -10,7 +10,7 @@ const ProductList = () => {
  
 
   if (diaryEntries.length === 0) {
-    return <div>Aradığınız tarihe uygun ürünleri bulamadık.</div>;
+    return <div>We couldn't find any products available for the date you searched for.</div>;
   }
 
   console.log(diaryEntries)
