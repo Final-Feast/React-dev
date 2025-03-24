@@ -25,25 +25,29 @@ const DiaryPage = () => {
     A: 1,
   };
 
-  const notAllowedFoods = products?.data
-    .filter(
-      (product) =>
-        product.groupBloodNotAllowed[bloodTypes[user?.bloodType]] === true
-    )
-    .map((product) => product.title);
-
   const getRandomItems = (arr, num) => {
     const shuffled = [...arr].sort(() => 0.5 - Math.random());
     return shuffled.slice(0, num);
   };
 
-  const randomNotAllowedFoods = getRandomItems(notAllowedFoods, 4);
-
   useEffect(() => {
-    if (randomNotAllowedFoods.length > 0) {
-      dispatch(setNotAllowedFoods(randomNotAllowedFoods));
+    // Önce kullanıcı kan grubu ve ürün listesi var mı diye kontrol et
+    if (user?.bloodType && products?.data?.length > 0) {
+      const notAllowedFoods = products.data
+        .filter(
+          (product) =>
+            product.groupBloodNotAllowed[bloodTypes[user.bloodType]] === true
+        )
+        .map((product) => product.title);
+
+      const randomNotAllowedFoods = getRandomItems(notAllowedFoods, 4);
+
+      // Rastgele yasaklı gıdalar varsa dispatch et
+      if (randomNotAllowedFoods.length > 0) {
+        dispatch(setNotAllowedFoods(randomNotAllowedFoods));
+      }
     }
-  }, [randomNotAllowedFoods]);
+  }, [user, products]);
 
   useEffect(() => {
     dispatch(fetchDiaryEntries(diaryDate));
