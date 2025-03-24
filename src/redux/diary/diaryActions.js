@@ -4,7 +4,7 @@ import axios from "axios";
 import { setEntries, setSummary, removeEntry } from "./diarySlice";
 import { Bounce, toast } from "react-toastify";
 
-const API_URL = "http://localhost:3000/api/diary";
+const API_URL = "https://diary-list-node-api.onrender.com/api/diary";
 
 export const fetchDiaryEntries = (date) => async (dispatch, getState) => {
   const token = getState().auth.accessToken;

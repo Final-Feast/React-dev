@@ -9,7 +9,7 @@ import {
   setIsAuthenticated,
 } from "./authSlice";
 import { toast, Bounce } from "react-toastify";
-const API_URL = "http://localhost:3000/api/auth";
+const API_URL = "https://diary-list-node-api.onrender.com/api/auth";
 
 export const login = (email, password) => async (dispatch) => {
   try {

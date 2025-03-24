@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-const URL = "http://localhost:3000/api/products";
+const URL = "https://diary-list-node-api.onrender.com/api/products";
 
 export const fetchProducts = createAsyncThunk(
   "products/fetchProducts",
