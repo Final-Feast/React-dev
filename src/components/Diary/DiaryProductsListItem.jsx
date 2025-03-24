@@ -1,12 +1,22 @@
-import styles from './DiaryProductsListItem.module.css';
+import { deleteDiaryEntry } from "../../redux/diary/diaryActions";
+import styles from "./DiaryProductsListItem.module.css";
+import { useDispatch } from "react-redux";
 
-const DiaryProductsListItem = ({ product, onDelete }) => {
+const DiaryProductsListItem = ({ diary }) => {
+  const dispatch = useDispatch();
+
+  const handleDelete = async () => {
+    await dispatch(deleteDiaryEntry(diary._id));
+  };
+
   return (
     <li className={styles.item}>
-      <span className={styles.name}>{product.productName}</span>
-      <span className={styles.amount}>{product.amount} g</span>
-      <span className={styles.dailyRate}>{product.dailyRate}kcal</span>
-      <button className={styles.button} onClick={() => onDelete(product.id)}>✖</button>
+      <span className={styles.name}>{diary.title}</span>
+      <span className={styles.amount}>{diary.weight} g</span>
+      <span className={styles.dailyRate}>{diary.calories}kcal</span>
+      <button className={styles.button} onClick={handleDelete}>
+        ✖
+      </button>
     </li>
   );
 };

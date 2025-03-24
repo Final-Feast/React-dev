@@ -1,46 +1,25 @@
-import { useEffect, useState } from 'react';
-import styles from './DiaryProductsList.module.css';
-import { useSelector } from 'react-redux'
+import { useEffect, useState } from "react";
+import styles from "./DiaryProductsList.module.css";
+import { useSelector } from "react-redux";
+import DiaryProductsListItem from "./DiaryProductsListItem";
 
 const ProductList = () => {
-  const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const diaryEntries = useSelector((state) => state.diary.diaryEntries);
 
-  const products = useSelector((state) => state.products.items)
+ 
 
-  console.log(products)
-
-  if (error) {
-    return <div>Error: {error}</div>;
+  if (diaryEntries.length === 0) {
+    return <div>Aradığınız tarihe uygun ürünleri bulamadık.</div>;
   }
+
+  console.log(diaryEntries)
 
   return (
     <div className={styles.productListContainer}>
-     
       <ul className={styles.productList}>
-        {products?.data.map((product) => (
-          <li key={product._id} className={styles.productItem}>
-            <h2 className={styles.title}>{product.title}</h2>
-            <div className={styles.textContainer}>
-            
-            <p className={styles.text}>Category: {product.categories}</p>
-            <p className={styles.text}>Weight: {product.weight}g</p>
-            <p className={styles.text}>Calories: {product.calories}</p>
-            {product.groupBloodNotAllowed && (
-              <p className={styles.text}>
-                Not Allowed Blood Groups:
-                {product.groupBloodNotAllowed.map(
-                  (isAllowed, index) =>
-                    !isAllowed && (
-                      <span key={index} className={styles.text}>
-                        Group {index}, 
-                      </span>
-                    )
-                )}
-              </p>
-            )}
-            </div>
-
-          </li>
+        {diaryEntries?.map((diary) => (
+          <DiaryProductsListItem key={diary._id} diary={diary} />
         ))}
       </ul>
     </div>
