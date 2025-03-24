@@ -44,7 +44,7 @@ const DiaryAddProductForm = () => {
     await dispatch(addDiaryEntry(productEntry, accessToken));
     setSearchTerm("");
     setAmount("");
-    setSelectedProduct(null);
+    setSelectedProduct(null); 
   };
 
   const handleSearch = (e) => {
@@ -83,6 +83,7 @@ const DiaryAddProductForm = () => {
               searchTerm.trim().length > 2 && setIsDropdownVisible(true)
             }
             onBlur={() => setTimeout(() => setIsDropdownVisible(false), 200)}
+            autoComplete="off"
           />
 
           {/* Dropdown menü */}
