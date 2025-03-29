@@ -1,4 +1,4 @@
-import {  useEffect } from "react";
+import { useEffect } from "react";
 import style from "./index.module.css";
 import { useNavigate } from "react-router-dom";
 import closeVektor from "../../../assets/svg/close-vektor.svg";
@@ -8,12 +8,13 @@ import { selectProducts } from "../../../redux/products/productsSelectors";
 import { useDispatch } from "react-redux";
 import { setNotAllowedFoods } from "../../../redux/products/productsSlice";
 
-const Modal = ({ onClose, formData }) => {
+const Modal = ({ onClose, result, formData }) => {
   const products = useSelector(selectProducts);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const dailyRate = useSelector((state) => state.auth.dailyRate)
+  const dailyRate = useSelector((state) => state.auth.dailyRate);
+  const accessToken = useSelector((state) => state.auth.accessToken);
 
   const bloodTypes = {
     0: 4,
@@ -85,7 +86,7 @@ const Modal = ({ onClose, formData }) => {
         <h2 className={style.title}>
           Your recommended daily calorie intake is
         </h2>
-        <p className={style.text}>{dailyRate} kcal</p>
+        <p className={style.text}>{accessToken ? dailyRate : result} kcal</p>
         <p className={style.list}> {/*  çizgi */} </p>
         <div>
           <p className={style.listText}>Foods you should not eat</p>
