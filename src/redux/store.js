@@ -10,13 +10,12 @@ import productsReducer from "./products/productsSlice";
 const authPersistConfig = {
   key: "auth",
   storage,
-  whiteList: ["accessToken"],
 };
 
 const productsPersistConfig = {
   key: "products",
   storage,
-  whiteList: ["randomNotAllowedFoods"],
+  whitelist: ["randomNotAllowedFoods"],
 };
 
 const rootReducer = combineReducers({

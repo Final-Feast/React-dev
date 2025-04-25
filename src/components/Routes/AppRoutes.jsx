@@ -14,7 +14,7 @@ const CalculatorPage = lazy(() =>
 
 export default function AppRoutes() {
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense>
       <Routes>
         <Route element={<DefaultRoute />}>
           <Route path="/" element={<HomePage />} />

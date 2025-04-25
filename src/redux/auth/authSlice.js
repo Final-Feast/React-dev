@@ -1,6 +1,4 @@
-// authSlice.js: Kullanıcının giriş/çıkış işlemleri ve token yönetimi için Redux slice’ı.
-
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, isPending } from "@reduxjs/toolkit";
 
 const initialState = {
   user: null,
@@ -8,6 +6,7 @@ const initialState = {
   refreshToken: null,
   isAuthenticated: false,
   dailyRate: null,
+  isLoading: false,
 };
 
 const authSlice = createSlice({
@@ -19,11 +18,12 @@ const authSlice = createSlice({
       state.accessToken = action.payload.accessToken;
       state.refreshToken = action.payload.refreshToken;
       state.isAuthenticated = true;
+      state.isLoading = false;
     },
     setUser: (state, action) => {
+      state.isLoading = true;
       state.user = action.payload.user;
       state.refreshToken = action.payload.refreshToken;
-      state.isAuthenticated = true;
     },
     logout: (state) => {
       state.user = null;

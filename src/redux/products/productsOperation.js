@@ -6,7 +6,7 @@ export const fetchProducts = createAsyncThunk(
   "products/fetchProducts",
   async (_, thunkAPI) => {
     try {
-      const response = await fetch(`${URL}`);
+      const response = await fetch(`${URL}/1`);
       if (!response.ok) {
         throw new Error("Veri alınamadı");
       }

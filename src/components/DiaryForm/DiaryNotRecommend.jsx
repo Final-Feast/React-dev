@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import { setNotAllowedFoods } from "../../redux/products/productsSlice.js";
 import { selectProducts } from "../../redux/products/productsSelectors.js";
 import { useEffect } from "react";
+import Loading from "../Loading/Loading.jsx";
 
 const DiarySummary = () => {
   const dispatch = useDispatch();
@@ -14,6 +15,7 @@ const DiarySummary = () => {
 
   const products = useSelector(selectProducts);
   const bloodType = useSelector((state) => state.auth.user.bloodType);
+  const isLoading = useSelector((state) => state.diary.isLoading);
 
   const bloodTypes = {
     0: 4,
@@ -50,13 +52,19 @@ const DiarySummary = () => {
     <div className={styles.productListContainer}>
       <h3 className={styles.title}>Food not recommended</h3>
       <div className={styles.textContainer}>
-        <ul className={styles.productList}>
-          {notAllowedFoods?.map((foods, index) => (
-            <li key={index} className={styles.text}>
-              {index + 1}. {foods}
-            </li>
-          ))}
-        </ul>
+        {isLoading ? (
+          <Loading />
+        ) : (
+          <>
+            <ul className={styles.productList}>
+              {notAllowedFoods?.map((foods, index) => (
+                <li key={index} className={styles.text}>
+                  {index + 1}. {foods}
+                </li>
+              ))}
+            </ul>
+          </>
+        )}
       </div>
     </div>
   );

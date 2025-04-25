@@ -4,13 +4,14 @@ import { useDispatch } from "react-redux";
 import { filterProductsByText } from "../../redux/products/productsOperation";
 import { useSelector } from "react-redux";
 import { addDiaryEntry } from "../../redux/diary/diaryActions";
-// import Mobile from 'DiaryAddProductFormMobile'
+import Loading from "../Loading/Loading"; // Loading komponentinizi import edin
 
 const DiaryAddProductForm = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [amount, setAmount] = useState("");
   const [isDropdownVisible, setIsDropdownVisible] = useState(false);
-  const [selectedProduct, setSelectedProduct] = useState(null); // Seçilen ürünü saklama
+  const [selectedProduct, setSelectedProduct] = useState(null);
+  const [isLoading, setIsLoading] = useState(false); // Loading durumu için state ekleyin
   const dispatch = useDispatch();
   const accessToken = useSelector((state) => state.auth.accessToken);
 
@@ -41,10 +42,19 @@ const DiaryAddProductForm = () => {
       calories: (selectedProduct.calories * amount) / 100,
       date,
     };
-    await dispatch(addDiaryEntry(productEntry, accessToken));
-    setSearchTerm("");
-    setAmount("");
-    setSelectedProduct(null); 
+
+    setIsLoading(true); // İşlem başladığında loading'i başlat
+
+    try {
+      await dispatch(addDiaryEntry(productEntry, accessToken));
+      setSearchTerm("");
+      setAmount("");
+      setSelectedProduct(null);
+    } catch (error) {
+      console.error("Ürün eklenirken hata oluştu:", error);
+    } finally {
+      setIsLoading(false); // İşlem bittiğinde loading'i durdur
+    }
   };
 
   const handleSearch = (e) => {
@@ -52,7 +62,7 @@ const DiaryAddProductForm = () => {
     setSearchTerm(value);
     setSelectedProduct(null);
 
-    if (value.trim().length > 2) {
+    if (value.trim().length > 1) {
       dispatch(filterProductsByText(value));
       setIsDropdownVisible(true);
     } else {
@@ -70,58 +80,60 @@ const DiaryAddProductForm = () => {
   };
   return (
     <div className={styles.container}>
-      <form className={styles.form} onSubmit={handleSubmit}>
-        <div className={styles.searchContainer}>
+      {isLoading ? (
+        <div className={styles.loadingContainer}>
+          <Loading />
+        </div>
+      ) : (
+        <form className={styles.form} onSubmit={handleSubmit}>
+          <div className={styles.searchContainer}>
+            <input
+              className={styles.input}
+              id="searchInput"
+              type="text"
+              placeholder="Enter product name"
+              value={searchTerm}
+              onChange={handleSearch}
+              onFocus={() =>
+                searchTerm.trim().length > 2 && setIsDropdownVisible(true)
+              }
+              onBlur={() => setTimeout(() => setIsDropdownVisible(false), 200)}
+              autoComplete="off"
+            />
+
+            {/* Dropdown menü */}
+            {isDropdownVisible && filteredItems && filteredItems.length > 0 && (
+              <div className={styles.dropdown}>
+                {filteredItems.map((product) => (
+                  <div
+                    key={product._id}
+                    className={styles.dropdownItem}
+                    onClick={() => handleSelectProduct(product)}
+                  >
+                    <span>{product.title}</span>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {renderNutritionInfo()}
+
           <input
             className={styles.input}
-            id="searchInput"
-            type="text"
-            placeholder="Enter product name"
-            value={searchTerm}
-            onChange={handleSearch}
-            onFocus={() =>
-              searchTerm.trim().length > 2 && setIsDropdownVisible(true)
-            }
-            onBlur={() => setTimeout(() => setIsDropdownVisible(false), 200)}
-            autoComplete="off"
+            type="number"
+            placeholder="Grams"
+            value={amount}
+            onChange={(e) => setAmount(e.target.value)}
           />
 
-          {/* Dropdown menü */}
-          {isDropdownVisible && filteredItems && filteredItems.length > 0 && (
-            <div className={styles.dropdown}>
-              {filteredItems.map((product) => (
-                <div
-                  key={product._id}
-                  className={styles.dropdownItem}
-                  onClick={() => handleSelectProduct(product)}
-                >
-                  <span>{product.title}</span>
-                </div>
-              ))}
-            </div>
-          )}
-        </div>
-
-        {renderNutritionInfo()}
-
-        <input
-          className={styles.input}
-          type="number"
-          placeholder="Grams"
-          value={amount}
-          onChange={(e) => setAmount(e.target.value)}
-        />
-
-        <div className={styles.buttonContainer}>
-          <button
-            className={styles.button}
-            type="submit"
-            disabled={!selectedProduct || !amount || amount <= 0}
-          >
-            +
-          </button>
-        </div>
-      </form>
+          <div className={styles.buttonContainer}>
+            <button className={styles.button} type="submit">
+              +
+            </button>
+          </div>
+        </form>
+      )}
     </div>
   );
 };

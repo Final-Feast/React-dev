@@ -1,12 +1,10 @@
-// diarySlice.js: Günlük (diary) ile ilgili Redux state’i.
-
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   diaryEntries: [],
   date: null,
   summary: null,
-  loading: false,
+  isLoading: true,
 };
 
 const diarySlice = createSlice({
@@ -16,8 +14,8 @@ const diarySlice = createSlice({
     setEntries: (state, action) => {
       state.diaryEntries = action.payload;
     },
-    setSummary:(state, action) => {
-      state.summary = action.payload
+    setSummary: (state, action) => {
+      state.summary = action.payload;
     },
     addDate: (state, action) => {
       state.date = action.payload;
@@ -30,8 +28,18 @@ const diarySlice = createSlice({
         (entry) => entry.id !== action.payload
       );
     },
+    setLoading: (state, action) => {
+      state.isLoading = action.payload;
+    },
   },
 });
 
-export const { setEntries, addEntry, removeEntry, addDate, setSummary } = diarySlice.actions;
+export const {
+  setEntries,
+  addEntry,
+  removeEntry,
+  addDate,
+  setSummary,
+  setLoading,
+} = diarySlice.actions;
 export default diarySlice.reducer;

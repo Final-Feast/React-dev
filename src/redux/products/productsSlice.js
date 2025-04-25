@@ -22,9 +22,11 @@ const productsSlice = createSlice({
     builder
       .addCase(fetchProducts.pending, (state) => {
         state.isLoading = true;
+        state.error = null;
       })
       .addCase(fetchProducts.fulfilled, (state, action) => {
         state.isLoading = false;
+        state.error = null;
         state.items = action.payload;
       })
       .addCase(fetchProducts.rejected, (state, action) => {

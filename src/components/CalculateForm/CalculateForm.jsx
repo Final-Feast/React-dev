@@ -1,8 +1,7 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import style from "./CalculateForm.module.css";
 import Modal from "../Modal/IntakeCalorie";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchProducts } from "../../redux/products/productsOperation";
 import { calculaterUser } from "../../redux/auth/authActions";
 import intakeCalorie from "../utils/intakeCalories";
 
@@ -10,13 +9,6 @@ const CalculateForm = () => {
   const dispatch = useDispatch();
   const [result, setResult] = useState(null);
   const accessToken = useSelector((state) => state.auth.accessToken);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      await dispatch(fetchProducts());
-    };
-    fetchData();
-  }, []);
 
   const [formData, setFormData] = useState({
     height: "",
@@ -140,7 +132,11 @@ const CalculateForm = () => {
       </form>
 
       {isModalOpen && (
-        <Modal result={result} formData={formData} onClose={() => setIsModalOpen(false)} />
+        <Modal
+          result={result}
+          formData={formData}
+          onClose={() => setIsModalOpen(false)}
+        />
       )}
     </div>
   );
